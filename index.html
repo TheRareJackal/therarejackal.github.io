@@ -119,6 +119,11 @@ section{padding:96px 0}
 .follow .btn{background:#16110a;color:var(--amber)}
 .follow .btn:hover{background:#000}
 
+.socials{display:grid;grid-template-columns:1fr 1fr;gap:10px;min-width:min(100%,340px)}
+.socials .btn{justify-content:center}
+.foot-social{display:flex;gap:20px;flex-wrap:wrap}
+.foot-social a{text-decoration:none;color:var(--muted)}
+.foot-social a:hover{color:var(--amber)}
 footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
@@ -149,6 +154,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <li><a href="#games">Games</a></li>
       <li><a href="#studio">Studio</a></li>
       <li><a href="#follow">Follow</a></li>
+      <li><a href="https://www.youtube.com/@RareJackal">YouTube</a></li>
     </ul>
   </div>
 </nav>
@@ -203,16 +209,26 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div>
       <h2>Be first to the next one</h2>
-      <p>New games, devlogs and playtest invites go out on X first. @TheRareJackal</p>
+      <p>New games, trailers, devlogs and playtest invites. Pick your feed.</p>
     </div>
-    <a class="btn cut" href="https://x.com/TheRareJackal">Follow on X</a>
+    <div class="socials">
+      <a class="btn cut" href="https://www.youtube.com/@RareJackal">YouTube</a>
+      <a class="btn cut" href="https://x.com/TheRareJackal">X</a>
+      <a class="btn cut" href="https://www.instagram.com/therarejackaldev/">Instagram</a>
+      <a class="btn cut" href="https://www.tiktok.com/@rare.jackal">TikTok</a>
+    </div>
   </div>
 </div>
 
 <footer>
   <div class="wrap">
     <span>© <span id="yr">2026</span> The Rare Jackal</span>
-    <span>Strategy games with teeth.</span>
+    <nav class="foot-social" aria-label="Social">
+      <a href="https://www.youtube.com/@RareJackal">YouTube</a>
+      <a href="https://x.com/TheRareJackal">X</a>
+      <a href="https://www.instagram.com/therarejackaldev/">Instagram</a>
+      <a href="https://www.tiktok.com/@rare.jackal">TikTok</a>
+    </nav>
   </div>
 </footer>
 
