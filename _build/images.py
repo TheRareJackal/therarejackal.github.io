@@ -9,13 +9,21 @@ MV = Path("D:/meat-vector/audits/2026-10-18")
 AW = Path("D:/a-thousand-wands")
 CT = Path("D:/Games/Corpse Tide/maps")
 
+CAP = Path("D:/site-capture/shots")
+SMD = Path("D:/site-capture/stock-market-dynasty/game/evidence")
+STUDIO = (52, 304, 2552, 1768)   # Roblox Studio play viewport (crops editor chrome)
+# Real current gameplay only. Entries are a path or (path, crop box).
 SHOTS = {
   "age-breaker": [S/f"ss{i}.jpg" for i in (1,2,3,4,5,6,7,8)],
-  "stock-market-dynasty": [ROOT/"_src"/"smd-a.png", ROOT/"assets"/"stock-market-dynasty.jpg"],
-  "corpse-tide": [CT/"bogaz/bogaz_s4.png", CT/"halic/halic_s3.png", CT/"kara_surlari/kara_surlari_s4.png", CT/"kapalicarsi/kapalicarsi_s3.png", CT/"beyoglu/beyoglu_s3.png"],
-  "a-thousand-wands": [AW/"art/concepts/caster-painted-0.52.png", AW/"art/concepts/conservatory-painted-background-v2.png", AW/"game/assets/bellroot_fen_pixel.png", AW/"art/concepts/aegis_beast_front-simple-v3.png", AW/"art/concepts/choirwarden_boss-simple-v3.png", AW/"game/assets/ember_foundry_pixel.png"],
-  "meat-vector": [MV/"pressure-cover/actions/first-carry.png", MV/"pressure-cover/actions/flight-0-12.png", MV/"pressure-cover/initial/first-damage.png", MV/"pressure-cover/carry-detail/settled-carry-1.png", MV/"windows-movement-review-14/title.jpg"],
-  "nightwinder": [NW/"boss-snuffer-lights-out.png", NW/"true-ending-s21-vesper-in-lucs-hands.png", NW/"sunday-s04-keep-over-not.png", NW/"the-stair-s17b-odiles-score.png", NW/"true-ending-s17-lucs-face.png"],
+  "stock-market-dynasty": [(SMD/"full-game-audit/live-v70-terminal.png", (0, 64, 2604, 1504)),
+                           (SMD/"full-game-audit/desktop-property-final.png", STUDIO),
+                           (SMD/"full-game-audit/desktop-trade-final.png", STUDIO),
+                           (SMD/"full-game-audit/final-Bots.png", STUDIO),
+                           ROOT/"_src"/"smd-a.png"],
+  "corpse-tide": [CAP/"ct/z4.png", CAP/"ct/b10.png", CAP/"ct/z3.png", CAP/"ct/keep-plan.png", CAP/"ct/keep-briefing.png", CAP/"ct/b07.png"],
+  "a-thousand-wands": [CAP/"aw/s11.png", CAP/"aw/s04.png", CAP/"aw/s09.png", CAP/"aw/s13.png", CAP/"aw/01.png", CAP/"wands/00-fresh-menu-tree.png"],
+  "meat-vector": [CAP/"mv/g01.png", CAP/"mv/g04.png", CAP/"mv/g05.png", CAP/"mv/02.png", CAP/"mv/g02.png", CAP/"mv/keep-starter.png"],
+  "nightwinder": [CAP/"nw/w5_6.png", CAP/"nw/w3_2.png", CAP/"nw/w5_4.png", CAP/"nw/w4_6.png", CAP/"nw/w4_end.png", CAP/"nw/keep-upgrade.png", CAP/"nw/01.png"],
 }
 def bg_fill(im):
     if im.mode in ("RGBA","LA","P"):
@@ -23,15 +31,20 @@ def bg_fill(im):
     return im.convert("RGB")
 for slug, files in SHOTS.items():
     d = OUT/slug; d.mkdir(parents=True, exist_ok=True)
+    for old in d.glob("*.jpg"): old.unlink()
     for i, f in enumerate(files, 1):
+        box = None
+        if isinstance(f, tuple): f, box = f
         if not f.exists(): print("missing", f); continue
         im = bg_fill(Image.open(f))
+        if box: im = im.crop(box)
         full = im.copy(); full.thumbnail((1600, 1000), Image.LANCZOS)
         full.save(d/f"{i}.jpg", quality=84, optimize=True, progressive=True)
         th = im.copy(); th.thumbnail((720, 450), Image.LANCZOS)
         th.save(d/f"{i}-t.jpg", quality=80, optimize=True, progressive=True)
     print(slug, len(files))
-# Corpse Tide card art from a real map
-im = Image.open(CT/"bogaz/bogaz_s4.png").convert("RGB"); w,h = im.size
-c = im.crop((0, (h - int(w*430/920))//2, w, (h + int(w*430/920))//2)).resize((1380,645), Image.LANCZOS)
-c.save(ROOT/"assets"/"corpse-tide.jpg", quality=84, optimize=True, progressive=True)
+# Card art: centre crop of each game's first gallery shot (except Age Breaker's key art)
+for slug in ["stock-market-dynasty", "corpse-tide", "a-thousand-wands", "meat-vector", "nightwinder"]:
+    im = Image.open(OUT/slug/"1.jpg").convert("RGB"); w, h = im.size; ch = int(w*430/920)
+    top = max(0, (h - ch)//2)
+    im.crop((0, top, w, min(h, top + ch))).resize((1380, 645), Image.LANCZOS).save(ROOT/"assets"/f"{slug}.jpg", quality=84, optimize=True, progressive=True)
