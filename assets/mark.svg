@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- The Rare Jackal: faceted front-facing mark. Two colours only. -->
+  <defs>
+    <style>
+      .bg { fill: #0d0d12; }
+      .ink { fill: #ffb01f; }
+      .cut { fill: #0d0d12; }
+      .deep { fill: #e07b12; }
+    </style>
+  </defs>
+  
+
+  <!-- ears -->
+  <polygon class="ink" points="548,470 618,96 736,452"/>
+  <polygon class="ink" points="476,470 406,96 288,452"/>
+  <!-- inner ear shadow facets -->
+  <polygon class="deep" points="584,462 618,150 650,400"/>
+  <polygon class="deep" points="440,462 406,150 374,400"/>
+  <!-- the notch: one bite out of the right ear -->
+  <polygon class="cut" points="662,300 712,392 672,392"/>
+
+  <!-- skull -->
+  <polygon class="ink" points="290,452 734,452 820,560 740,660 640,760 512,960 384,760 284,660 204,560"/>
+  <!-- lower muzzle, darker facet -->
+  <polygon class="deep" points="400,700 624,700 512,960"/>
+  <!-- brow facet -->
+  <polygon class="deep" points="290,452 734,452 512,520"/>
+
+  <!-- centre crack (negative space) -->
+  <polygon class="cut" points="512,452 528,530 500,610 520,690 512,760 504,690 486,610 496,530"/>
+
+  <!-- eyes: angular slits -->
+  <polygon class="cut" points="560,566 690,540 668,596 586,606"/>
+  <polygon class="cut" points="464,566 334,540 356,596 438,606"/>
+  <!-- eye glints -->
+  <polygon class="ink" points="596,572 640,564 634,584 600,588"/>
+  <polygon class="ink" points="428,572 384,564 390,584 424,588"/>
+
+  <!-- cheek cuts -->
+  <polygon class="cut" points="760,560 820,560 700,700 690,676"/>
+  <polygon class="cut" points="264,560 204,560 324,700 334,676"/>
+
+  <!-- nose -->
+  <polygon class="cut" points="466,770 558,770 512,836"/>
+  <!-- mouth line -->
+  <polygon class="cut" points="506,836 518,836 522,896 502,896"/>
+</svg>

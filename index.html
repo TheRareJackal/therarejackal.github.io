@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Rare Jackal</title>
+<meta name="description" content="The Rare Jackal is a one-person game studio making strategy games with teeth. Every game, out now and on the way.">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0d12; --bg-2:#15151d; --bg-3:#1f1f2a; --line:#2a2a38;
+  --ink:#f4f1ea; --muted:#a3a0b2; --amber:#ffb01f; --deep:#e07b12;
+  --display:"Chakra Petch",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif;
+  --cut:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img,video,svg{display:block;max-width:100%}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.eyebrow{font:600 12px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.02;letter-spacing:-.01em}
+.cut{clip-path:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,var(--cut) 100%,0 calc(100% - var(--cut)))}
+
+nav{position:sticky;top:0;z-index:20;background:rgba(13,13,18,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 18px var(--display);letter-spacing:.04em;text-transform:uppercase}
+.brand img{width:34px;height:34px}
+nav ul{display:flex;gap:28px;list-style:none;font-size:14px;font-weight:500}
+nav ul a{text-decoration:none;color:var(--muted)}
+nav ul a:hover{color:var(--amber)}
+
+.hero{position:relative;padding:80px 0 88px;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(55% 75% at 80% 45%,rgba(255,176,31,.15),transparent 70%),
+  repeating-linear-gradient(135deg,transparent 0 46px,rgba(255,255,255,.025) 46px 47px)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(50px,8vw,108px);text-transform:uppercase;margin:20px 0 24px}
+.hero h1 em{font-style:normal;color:var(--amber);display:block}
+.hero p.lede{font-size:20px;color:var(--muted);max-width:34ch}
+.hero .mark{width:100%;max-width:400px;justify-self:end;filter:drop-shadow(0 30px 60px rgba(224,123,18,.25));animation:rise 1s ease-out both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.stats{display:flex;gap:36px;margin-top:34px;flex-wrap:wrap}
+.stats div b{display:block;font:700 40px/1 var(--display);color:var(--amber)}
+.stats div span{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;font:700 14px var(--display);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;--cut:12px;border:0;cursor:pointer}
+.btn-primary{background:var(--amber);color:#16110a}
+.btn-primary:hover{background:#ffc24d}
+.btn-ghost{background:var(--bg-3);color:var(--ink)}
+a.btn-ghost:hover{background:#2a2a38}
+.btn-off{background:var(--bg-3);color:var(--muted);cursor:default}
+
+section{padding:96px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px}
+.section-head h2{font-size:clamp(38px,5vw,60px);text-transform:uppercase;margin-top:14px}
+.section-head p{color:var(--muted);max-width:40ch}
+
+/* spotlight */
+.spot{display:grid;grid-template-columns:1.3fr 1fr;background:var(--bg-2);--cut:34px;margin-bottom:72px}
+.spot .media{background:#000;aspect-ratio:16/9}
+.spot video{width:100%;height:100%;object-fit:cover}
+.spot .body{padding:40px;display:flex;flex-direction:column;gap:14px}
+.spot h3{font-size:46px;text-transform:uppercase}
+.spot p{color:var(--muted)}
+.spot .btns{margin-top:auto}
+
+.tag{display:inline-block;align-self:flex-start;padding:6px 10px;font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;border:1px solid}
+.tag.out{background:rgba(255,176,31,.12);color:var(--amber);border-color:rgba(255,176,31,.4)}
+.tag.soon{background:rgba(95,227,192,.08);color:#5fe3c0;border-color:rgba(95,227,192,.35)}
+.tag.dev{background:rgba(255,255,255,.04);color:var(--muted);border-color:var(--line)}
+.genre{color:var(--amber);font-weight:600;font-size:14px;letter-spacing:.04em}
+
+/* filters */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.filters button{font:600 13px var(--body);letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;background:var(--bg-2);color:var(--muted);border:1px solid var(--line);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--amber);color:#16110a;border-color:var(--amber)}
+.filters button:hover:not([aria-pressed="true"]){color:var(--ink)}
+
+/* catalog */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--bg-2);display:flex;flex-direction:column;transition:transform .25s ease}
+.card:hover{transform:translateY(-4px)}
+.card .art{aspect-ratio:920/430;overflow:hidden;background:#000}
+.card .art img,.card .art svg{width:100%;height:100%;object-fit:cover}
+.card .body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{font-size:28px;text-transform:uppercase}
+.card p{color:var(--muted);font-size:15px}
+.card .platforms{display:flex;gap:6px;flex-wrap:wrap}
+.card .platforms span{font-size:12px;padding:3px 8px;background:var(--bg-3);color:var(--muted)}
+.card .links{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap}
+.card .links .btn{padding:10px 14px;font-size:12px;--cut:9px}
+.card.next{background:transparent;border:2px dashed var(--line);clip-path:none;align-items:center;justify-content:center;text-align:center;padding:40px 28px;min-height:360px}
+.card.next img{width:84px;opacity:.35;margin:0 auto 18px}
+.card.next h3{color:var(--muted)}
+.empty{color:var(--muted);padding:24px 0}
+
+/* about */
+.about{background:var(--bg-2);border-block:1px solid var(--line)}
+.about .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+.about h2{font-size:clamp(38px,5vw,60px);text-transform:uppercase;margin-top:14px}
+.about .copy p{font-size:19px;color:var(--muted);margin-bottom:20px}
+.about .copy p strong{color:var(--ink);font-weight:600}
+.promises{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.promise{background:var(--bg-3);padding:22px;--cut:14px}
+.promise b{font:700 17px var(--display);text-transform:uppercase;display:block;margin-bottom:6px}
+.promise span{font-size:14px;color:var(--muted)}
+
+.follow{background:var(--amber);color:#16110a;padding:84px 0;position:relative;overflow:hidden}
+.follow::after{content:"";position:absolute;right:-60px;top:-50px;width:420px;height:420px;background:url(assets/mark.svg) center/contain no-repeat;opacity:.12;filter:grayscale(1) brightness(0)}
+.follow .wrap{position:relative;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+.follow h2{font-size:clamp(40px,6vw,72px);text-transform:uppercase;max-width:16ch}
+.follow p{font-weight:500;margin-top:10px;max-width:42ch}
+.follow .btn{background:#16110a;color:var(--amber)}
+.follow .btn:hover{background:#000}
+
+footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:980px){.grid{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){
+  nav ul{display:none}
+  .hero{padding:48px 0 60px}
+  .hero .wrap,.spot,.about .wrap{grid-template-columns:1fr}
+  .hero .mark{justify-self:start;max-width:180px;order:-1}
+  .grid{grid-template-columns:1fr}
+  .spot .body{padding:26px 22px 30px}
+  .spot h3{font-size:34px}
+  .section-head{flex-direction:column;align-items:start}
+  .promises{grid-template-columns:1fr}
+  section{padding:64px 0}
+  .about .wrap{gap:20px}
+  .stats{gap:24px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/mark.svg" alt="">The Rare Jackal</a>
+    <ul>
+      <li><a href="#games">Games</a></li>
+      <li><a href="#studio">Studio</a></li>
+      <li><a href="#follow">Follow</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Independent game studio</div>
+      <h1>Strategy games <em>with teeth.</em></h1>
+      <p class="lede">Every game The Rare Jackal makes, out now and on the way, in one place. Original worlds, original music, no ads, ever.</p>
+      <div class="stats" id="stats"></div>
+    </div>
+    <img class="mark" src="assets/mark.svg" alt="The Rare Jackal mark: a faceted amber jackal head with a notched ear">
+  </div>
+</header>
+
+<section id="games">
+  <div class="wrap">
+    <div class="section-head">
+      <div><div class="eyebrow">Spotlight</div><h2 id="spot-heading">Latest release</h2></div>
+    </div>
+    <article class="spot cut" id="spotlight"></article>
+
+    <div class="section-head">
+      <div><div class="eyebrow">The catalog</div><h2>All games</h2></div>
+      <p>Released, coming soon and still in the den. New games land here first.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter games" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="about" id="studio">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">The studio</div>
+      <h2>One jackal.<br>No pack.</h2>
+    </div>
+    <div class="copy">
+      <p><strong>The Rare Jackal is a one-person game studio.</strong> Design, code, art and music all come from the same desk, so every game ships the way it was meant to.</p>
+      <p>The focus is strategy you can sink your teeth into: lane battles, horde defense, rhythm, tycoons and the occasional odd experiment. Games stay small enough to finish and deep enough to keep playing.</p>
+      <div class="promises">
+        <div class="promise cut"><b>No ads</b><span>Not now, not later.</span></div>
+        <div class="promise cut"><b>No gacha</b><span>No loot boxes or energy timers.</span></div>
+        <div class="promise cut"><b>Original</b><span>Every world and soundtrack is ours.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="follow" id="follow">
+  <div class="wrap">
+    <div>
+      <h2>Be first to the next one</h2>
+      <p>New games, devlogs and playtest invites go out on X first. @TheRareJackal</p>
+    </div>
+    <a class="btn cut" href="https://x.com/TheRareJackal">Follow on X</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> The Rare Jackal</span>
+    <span>Strategy games with teeth.</span>
+  </div>
+</footer>
+
+<!-- Placeholder art for games without key art yet -->
+<template id="art-corpse-tide">
+  <svg viewBox="0 0 920 430" role="img" aria-label="Corpse Tide: a city grid overrun from the east">
+    <defs>
+      <linearGradient id="ct" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f1a1a"/><stop offset="1" stop-color="#1c0f10"/></linearGradient>
+      <radialGradient id="ctg" cx=".82" cy=".55" r=".55"><stop offset="0" stop-color="#c2262e" stop-opacity=".55"/><stop offset="1" stop-color="#c2262e" stop-opacity="0"/></radialGradient>
+      <pattern id="blk" width="60" height="60" patternUnits="userSpaceOnUse"><rect x="6" y="6" width="44" height="44" fill="#22302f"/></pattern>
+    </defs>
+    <rect width="920" height="430" fill="url(#ct)"/><rect width="920" height="430" fill="url(#blk)" opacity=".75"/><rect width="920" height="430" fill="url(#ctg)"/>
+    <g fill="#ff4b52"><circle cx="700" cy="210" r="5"/><circle cx="742" cy="240" r="5"/><circle cx="770" cy="190" r="5"/><circle cx="812" cy="260" r="5"/><circle cx="660" cy="270" r="5"/><circle cx="840" cy="210" r="5"/><circle cx="726" cy="300" r="5"/><circle cx="790" cy="320" r="5"/><circle cx="620" cy="220" r="5"/><circle cx="868" cy="290" r="5"/></g>
+    <path d="M120 360 L300 360 L300 330" stroke="#5fe3c0" stroke-width="6" fill="none"/><circle cx="120" cy="360" r="14" fill="#5fe3c0"/>
+    <text x="60" y="110" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="84" fill="#f4f1ea">CORPSE TIDE</text>
+    <text x="64" y="150" font-family="Inter, sans-serif" font-size="22" fill="#9fb8b3" letter-spacing="4">EVACUATE PORT MERCY</text>
+  </svg>
+</template>
+<template id="art-orehaul">
+  <svg viewBox="0 0 920 430" role="img" aria-label="OreHaul: layered rock with glowing ore">
+    <rect width="920" height="430" fill="#191410"/>
+    <path d="M0 120 L180 100 L360 130 L560 95 L740 125 L920 105 L920 430 L0 430Z" fill="#2a2018"/>
+    <path d="M0 220 L200 205 L420 235 L640 200 L920 225 L920 430 L0 430Z" fill="#3a2a1d"/>
+    <path d="M0 320 L240 305 L470 330 L700 300 L920 320 L920 430 L0 430Z" fill="#4a3522"/>
+    <g fill="#ffb01f"><polygon points="300,260 318,248 330,268 312,280"/><polygon points="520,170 540,160 548,182 528,190"/><polygon points="690,360 712,348 722,372 700,380"/><polygon points="140,350 158,340 166,360 148,368"/></g>
+    <g fill="#5fd2ff"><polygon points="430,300 446,290 456,308 440,318"/><polygon points="800,250 816,240 826,258 810,268"/></g>
+    <text x="60" y="80" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="72" fill="#f4f1ea">OREHAUL</text>
+  </svg>
+</template>
+<template id="art-smd">
+  <svg viewBox="0 0 920 430" role="img" aria-label="Stock Market Dynasty: a rising price chart over a city skyline">
+    <rect width="920" height="430" fill="#0c1424"/>
+    <g fill="#16233b"><rect x="40" y="250" width="70" height="180"/><rect x="130" y="200" width="90" height="230"/><rect x="240" y="280" width="60" height="150"/><rect x="620" y="220" width="80" height="210"/><rect x="720" y="170" width="100" height="260"/><rect x="840" y="260" width="60" height="170"/></g>
+    <polyline points="40,330 140,300 220,315 320,250 400,270 480,200 560,215 640,140 740,160 880,80" fill="none" stroke="#3ee07a" stroke-width="8" stroke-linejoin="round"/>
+    <g fill="#3ee07a"><circle cx="880" cy="80" r="12"/></g>
+    <text x="50" y="90" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="60" fill="#f4f1ea">STOCK MARKET</text>
+    <text x="52" y="146" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="60" fill="#ffb01f">DYNASTY</text>
+  </svg>
+</template>
+
+<script>
+/*
+  THE GAME LIST. To add a future game, copy one entry and edit it.
+  status: "out" (released), "soon" (announced / wishlist), "dev" (in development)
+  art: an image path in assets/, or "#template-id" for built-in placeholder art
+  links: [{label, url}]  — a link with no url shows as a disabled "coming soon" button
+  spotlight: true puts the game in the big feature slot (first one wins)
+*/
+const GAMES = [
+  {
+    id: "age-breaker", title: "Age Breaker", subtitle: "Six Eras",
+    status: "out", genre: "Lane strategy",
+    platforms: ["PC", "Android", "iOS"],
+    blurb: "Evolve your army from bone clubs to plasma blades and hold a single lane against everything the next age throws at you. Draft cards, fight a 36-battle campaign across six eras, and play free to start with one purchase for everything.",
+    art: "assets/age-breaker.jpg",
+    video: "assets/age-breaker-trailer.mp4", poster: "assets/trailer-poster.jpg",
+    links: [
+      { label: "Steam", url: "https://store.steampowered.com/app/5431200/" },
+      { label: "Google Play · Soon" },
+      { label: "App Store · Soon" }
+    ],
+    spotlight: true
+  },
+  {
+    id: "corpse-tide", title: "Corpse Tide",
+    status: "soon", genre: "Evacuation strategy",
+    platforms: ["PC"],
+    blurb: "Top-down horde defense where winning means getting people out. Thousands of infected, twelve campaigns across Port Mercy, and a map editor with Workshop support.",
+    art: "#art-corpse-tide",
+    links: [{ label: "Steam · Soon" }]
+  },
+  {
+    id: "smd", title: "Stock Market Dynasty",
+    status: "out", genre: "Trading tycoon",
+    platforms: ["Roblox"],
+    blurb: "Buy low, sell high and build a financial empire with friends in a living market on Roblox.",
+    art: "#art-smd",
+    links: [{ label: "Roblox · Link soon" }]
+  },
+  {
+    id: "nightwinder", title: "Nightwinder",
+    status: "dev", genre: "Music-driven roguelite",
+    platforms: ["PC"],
+    blurb: "An arena roguelite where your song is your weapon. Choose the bass, melody and feel; the arranger keeps it in time while you fight.",
+    art: "assets/nightwinder.svg",
+    links: []
+  },
+  {
+    id: "orehaul", title: "OreHaul",
+    status: "dev", genre: "Excavation incremental",
+    platforms: ["PC"],
+    blurb: "Dig deeper, haul smarter and turn one rusty drill into a mining empire.",
+    art: "#art-orehaul",
+    links: []
+  }
+];
+
+const STATUS = { out: "Out now", soon: "Coming soon", dev: "In development" };
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+function artHTML(g) {
+  if (g.art && g.art.startsWith("#")) {
+    const t = document.querySelector(g.art);
+    return t ? t.innerHTML : "";
+  }
+  return g.art ? `<img src="${esc(g.art)}" alt="${esc(g.title)} key art" loading="lazy">` : "";
+}
+function linksHTML(g, small) {
+  return (g.links || []).map(l => l.url
+    ? `<a class="btn ${small ? "btn-ghost" : "btn-primary"} cut" href="${esc(l.url)}">${esc(l.label)}</a>`
+    : `<span class="btn btn-off cut" aria-disabled="true">${esc(l.label)}</span>`).join("");
+}
+
+// spotlight
+const spot = GAMES.find(g => g.spotlight) || GAMES.find(g => g.status === "out") || GAMES[0];
+document.getElementById("spotlight").innerHTML = `
+  <div class="media">${spot.video
+    ? `<video src="${esc(spot.video)}" poster="${esc(spot.poster || "")}" controls playsinline preload="none" aria-label="${esc(spot.title)} trailer"></video>`
+    : artHTML(spot)}</div>
+  <div class="body">
+    <span class="tag ${spot.status}">${STATUS[spot.status]}</span>
+    <h3>${esc(spot.title)}</h3>
+    <div class="genre">${spot.subtitle ? esc(spot.subtitle) + " · " : ""}${esc(spot.genre)}</div>
+    <p>${esc(spot.blurb)}</p>
+    <div class="btns">${linksHTML(spot)}</div>
+  </div>`;
+
+// stats
+const count = s => GAMES.filter(g => g.status === s).length;
+document.getElementById("stats").innerHTML = [
+  [GAMES.length, "Games"], [count("out"), "Out now"], [count("soon") + count("dev"), "On the way"]
+].map(([n, l]) => `<div><b>${n}</b><span>${l}</span></div>`).join("");
+
+// filters + grid
+const FILTERS = [["all", "All"], ["out", "Out now"], ["soon", "Coming soon"], ["dev", "In development"]];
+let current = "all";
+try { const saved = localStorage.getItem("trj-filter"); if (FILTERS.some(f => f[0] === saved)) current = saved; } catch (e) {}
+
+function renderFilters() {
+  document.getElementById("filters").innerHTML = FILTERS
+    .filter(([k]) => k === "all" || count(k) > 0)
+    .map(([k, l]) => `<button type="button" data-k="${k}" aria-pressed="${k === current}">${l}</button>`).join("");
+}
+function renderGrid() {
+  const list = GAMES.filter(g => current === "all" || g.status === current);
+  const cards = list.map(g => `
+    <article class="card cut" id="${esc(g.id)}">
+      <div class="art">${artHTML(g)}</div>
+      <div class="body">
+        <span class="tag ${g.status}">${STATUS[g.status]}</span>
+        <h3>${esc(g.title)}</h3>
+        <div class="genre">${esc(g.genre)}</div>
+        <p>${esc(g.blurb)}</p>
+        <div class="platforms">${g.platforms.map(p => `<span>${esc(p)}</span>`).join("")}</div>
+        ${g.links && g.links.length ? `<div class="links">${linksHTML(g, true)}</div>` : ""}
+      </div>
+    </article>`);
+  if (current === "all" || current === "dev") {
+    cards.push(`<div class="card next"><img src="assets/mark.svg" alt=""><h3>Next game</h3><p>Something new is always in the den. Follow along to see it first.</p></div>`);
+  }
+  document.getElementById("grid").innerHTML = cards.join("") || `<p class="empty">Nothing here yet.</p>`;
+}
+document.getElementById("filters").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  current = b.dataset.k;
+  try { localStorage.setItem("trj-filter", current); } catch (e) {}
+  renderFilters(); renderGrid();
+});
+renderFilters(); renderGrid();
+document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
