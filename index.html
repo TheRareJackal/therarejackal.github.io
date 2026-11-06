@@ -5,7 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Rare Jackal</title>
 <meta name="description" content="The Rare Jackal is a one-person game studio making strategy games with teeth. Every game, out now and on the way.">
+<link rel="canonical" href="https://rarejackal.com/">
+<meta name="theme-color" content="#0d0d12">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Rare Jackal">
+<meta property="og:title" content="The Rare Jackal: strategy games with teeth">
+<meta property="og:description" content="A one-person game studio. Age Breaker: Six Eras is out now on Steam; more games on the way.">
+<meta property="og:url" content="https://rarejackal.com/">
+<meta property="og:image" content="https://rarejackal.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@TheRareJackal">
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icon-512.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,6 +34,11 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;z-index:50;background:var(--amber);color:#16110a;padding:10px 14px;font-weight:600}
+.skip:focus{left:8px}
+section,[id]{scroll-margin-top:80px}
+::selection{background:var(--amber);color:#16110a}
 img,video,svg{display:block;max-width:100%}
 .wrap{width:min(1180px,100% - 32px);margin-inline:auto}
 .eyebrow{font:600 12px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
@@ -63,9 +82,10 @@ section{padding:96px 0}
 
 /* spotlight */
 .spot{display:grid;grid-template-columns:1.3fr 1fr;background:var(--bg-2);--cut:34px;margin-bottom:72px}
-.spot .media{background:#000;aspect-ratio:16/9}
+.spot .media{background:#000;aspect-ratio:16/9;align-self:center}
 .spot video{width:100%;height:100%;object-fit:cover}
-.spot .body{padding:40px;display:flex;flex-direction:column;gap:14px}
+.spot{align-items:stretch}
+.spot .body{padding:36px 36px 34px;display:flex;flex-direction:column;gap:12px}
 .spot h3{font-size:46px;text-transform:uppercase}
 .spot p{color:var(--muted)}
 .spot .btns{margin-top:auto}
@@ -86,6 +106,10 @@ section{padding:96px 0}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .card{background:var(--bg-2);display:flex;flex-direction:column;transition:transform .25s ease}
 .card:hover{transform:translateY(-4px)}
+.card .art img{transition:transform .5s ease}
+.card:hover .art img{transform:scale(1.04)}
+.card .when{font-size:13px;color:var(--muted)}
+.spot .when{font-size:14px;color:var(--muted)}
 .card .art{aspect-ratio:920/430;overflow:hidden;background:#000}
 .card .art img,.card .art svg{width:100%;height:100%;object-fit:cover}
 .card .body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
@@ -95,8 +119,11 @@ section{padding:96px 0}
 .card .platforms span{font-size:12px;padding:3px 8px;background:var(--bg-3);color:var(--muted)}
 .card .links{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap}
 .card .links .btn{padding:10px 14px;font-size:12px;--cut:9px}
-.card.next{background:transparent;border:2px dashed var(--line);clip-path:none;align-items:center;justify-content:center;text-align:center;padding:40px 28px;min-height:360px}
-.card.next img{width:84px;opacity:.35;margin:0 auto 18px}
+.card.next{grid-column:1/-1;flex-direction:row;gap:24px;background:transparent;border:2px dashed var(--line);clip-path:none;align-items:center;justify-content:center;text-align:left;padding:28px 32px;min-height:0}
+.card.next:hover{transform:none}
+.card.next img{width:64px;opacity:.4;margin:0;flex:none}
+.card.next h3{font-size:24px;margin-bottom:4px}
+.card.next .art,.card.next .body{display:contents}
 .card.next h3{color:var(--muted)}
 .empty{color:var(--muted);padding:24px 0}
 
@@ -138,6 +165,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .spot h3{font-size:34px}
   .section-head{flex-direction:column;align-items:start}
   .promises{grid-template-columns:1fr}
+  .card.next{flex-direction:column;text-align:center}
+  .card.next .btn{margin-left:0!important}
   section{padding:64px 0}
   .about .wrap{gap:20px}
   .stats{gap:24px}
@@ -146,10 +175,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </style>
 </head>
 <body>
+<a class="skip" href="#games">Skip to games</a>
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="#top"><img src="assets/mark.svg" alt="">The Rare Jackal</a>
+    <a class="brand" href="#top" aria-label="The Rare Jackal home"><img src="assets/mark.svg" alt="">The Rare Jackal</a>
     <ul>
       <li><a href="#games">Games</a></li>
       <li><a href="#studio">Studio</a></li>
@@ -159,7 +189,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </nav>
 
-<header class="hero" id="top">
+<main id="top">
+<header class="hero">
   <div class="wrap">
     <div>
       <div class="eyebrow">Independent game studio</div>
@@ -195,7 +226,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
     <div class="copy">
       <p><strong>The Rare Jackal is a one-person game studio.</strong> Design, code, art and music all come from the same desk, so every game ships the way it was meant to.</p>
-      <p>The focus is strategy you can sink your teeth into: lane battles, horde defense, rhythm, tycoons and the occasional odd experiment. Games stay small enough to finish and deep enough to keep playing.</p>
+      <p>The focus is games you can sink your teeth into: lane battles, horde defense, spellcraft, rhythm, tycoons and the occasional strange experiment. Games stay small enough to finish and deep enough to keep playing.</p>
       <div class="promises">
         <div class="promise cut"><b>No ads</b><span>Not now, not later.</span></div>
         <div class="promise cut"><b>No gacha</b><span>No loot boxes or energy timers.</span></div>
@@ -219,6 +250,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
   </div>
 </div>
+
+</main>
 
 <footer>
   <div class="wrap">
@@ -247,27 +280,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <text x="64" y="150" font-family="Inter, sans-serif" font-size="22" fill="#9fb8b3" letter-spacing="4">EVACUATE PORT MERCY</text>
   </svg>
 </template>
-<template id="art-orehaul">
-  <svg viewBox="0 0 920 430" role="img" aria-label="OreHaul: layered rock with glowing ore">
-    <rect width="920" height="430" fill="#191410"/>
-    <path d="M0 120 L180 100 L360 130 L560 95 L740 125 L920 105 L920 430 L0 430Z" fill="#2a2018"/>
-    <path d="M0 220 L200 205 L420 235 L640 200 L920 225 L920 430 L0 430Z" fill="#3a2a1d"/>
-    <path d="M0 320 L240 305 L470 330 L700 300 L920 320 L920 430 L0 430Z" fill="#4a3522"/>
-    <g fill="#ffb01f"><polygon points="300,260 318,248 330,268 312,280"/><polygon points="520,170 540,160 548,182 528,190"/><polygon points="690,360 712,348 722,372 700,380"/><polygon points="140,350 158,340 166,360 148,368"/></g>
-    <g fill="#5fd2ff"><polygon points="430,300 446,290 456,308 440,318"/><polygon points="800,250 816,240 826,258 810,268"/></g>
-    <text x="60" y="80" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="72" fill="#f4f1ea">OREHAUL</text>
-  </svg>
-</template>
-<template id="art-smd">
-  <svg viewBox="0 0 920 430" role="img" aria-label="Stock Market Dynasty: a rising price chart over a city skyline">
-    <rect width="920" height="430" fill="#0c1424"/>
-    <g fill="#16233b"><rect x="40" y="250" width="70" height="180"/><rect x="130" y="200" width="90" height="230"/><rect x="240" y="280" width="60" height="150"/><rect x="620" y="220" width="80" height="210"/><rect x="720" y="170" width="100" height="260"/><rect x="840" y="260" width="60" height="170"/></g>
-    <polyline points="40,330 140,300 220,315 320,250 400,270 480,200 560,215 640,140 740,160 880,80" fill="none" stroke="#3ee07a" stroke-width="8" stroke-linejoin="round"/>
-    <g fill="#3ee07a"><circle cx="880" cy="80" r="12"/></g>
-    <text x="50" y="90" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="60" fill="#f4f1ea">STOCK MARKET</text>
-    <text x="52" y="146" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="60" fill="#ffb01f">DYNASTY</text>
-  </svg>
-</template>
 
 <script>
 /*
@@ -280,48 +292,57 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 const GAMES = [
   {
     id: "age-breaker", title: "Age Breaker", subtitle: "Six Eras",
-    status: "out", genre: "Lane strategy",
-    platforms: ["PC", "Android", "iOS"],
+    status: "out", released: "October 30, 2026", genre: "Lane strategy",
+    platforms: ["PC (Steam)", "Android", "iOS"],
     blurb: "Evolve your army from bone clubs to plasma blades and hold a single lane against everything the next age throws at you. Draft cards, fight a 36-battle campaign across six eras, and play free to start with one purchase for everything.",
     art: "assets/age-breaker.jpg",
     video: "assets/age-breaker-trailer.mp4", poster: "assets/trailer-poster.jpg",
     links: [
-      { label: "Steam", url: "https://store.steampowered.com/app/5431200/" },
+      { label: "Buy on Steam", url: "https://store.steampowered.com/app/5431200/" },
       { label: "Google Play · Soon" },
       { label: "App Store · Soon" }
     ],
+    pitch: "Evolve your army from bone clubs to plasma blades and hold one lane against six eras of escalating war. Free to start, one purchase for everything.",
     spotlight: true
+  },
+  {
+    id: "stock-market-dynasty", title: "Stock Market Dynasty",
+    status: "out", genre: "Trading tycoon",
+    platforms: ["Roblox"],
+    blurb: "Read the charts, go long or short and grow $100,000 into a trading empire in a live market with friends.",
+    art: "assets/stock-market-dynasty.jpg",
+    links: [{ label: "Play on Roblox", url: "https://www.roblox.com/games/107712864019984/Stock-Market-Dynasty" }]
   },
   {
     id: "corpse-tide", title: "Corpse Tide",
     status: "soon", genre: "Evacuation strategy",
-    platforms: ["PC"],
+    platforms: ["PC (Steam)"],
     blurb: "Top-down horde defense where winning means getting people out. Thousands of infected, twelve campaigns across Port Mercy, and a map editor with Workshop support.",
     art: "#art-corpse-tide",
     links: [{ label: "Steam · Soon" }]
   },
   {
-    id: "smd", title: "Stock Market Dynasty",
-    status: "out", genre: "Trading tycoon",
-    platforms: ["Roblox"],
-    blurb: "Buy low, sell high and build a financial empire with friends in a living market on Roblox.",
-    art: "#art-smd",
-    links: [{ label: "Roblox · Link soon" }]
+    id: "a-thousand-wands", title: "A Thousand Wands",
+    status: "soon", genre: "Spellcasting army defense",
+    platforms: ["PC (Steam)", "Mac"],
+    blurb: "Hold the line with sky-cast spells and a recruited army. Mix six elements into new reactions, bind magic weapons to your allies and restore a shattered academy one battle at a time.",
+    art: "assets/a-thousand-wands.jpg",
+    links: [{ label: "Steam · Soon" }]
   },
   {
-    id: "nightwinder", title: "Nightwinder",
-    status: "dev", genre: "Music-driven roguelite",
+    id: "meat-vector", title: "Meat Vector",
+    status: "dev", genre: "3D action roguelite",
     platforms: ["PC"],
-    blurb: "An arena roguelite where your song is your weapon. Choose the bass, melody and feel; the arranger keeps it in time while you fight.",
-    art: "assets/nightwinder.svg",
+    blurb: "Weaponize the swarm. Grip and throw creatures, chain their momentum, orbit the dead as shields and turn corpses into ammunition through three industrial nightmares.",
+    art: "assets/meat-vector.jpg",
     links: []
   },
   {
-    id: "orehaul", title: "OreHaul",
-    status: "dev", genre: "Excavation incremental",
-    platforms: ["PC"],
-    blurb: "Dig deeper, haul smarter and turn one rusty drill into a mining empire.",
-    art: "#art-orehaul",
+    id: "nightwinder", title: "Nightwinder",
+    status: "dev", genre: "Music-driven arena roguelite",
+    platforms: ["PC", "Mac"],
+    blurb: "Pick one of twelve musicians and fight wave after wave while the arranger turns your choices into a song. Every note you earn is an attack.",
+    art: "assets/nightwinder.jpg",
     links: []
   }
 ];
@@ -352,7 +373,8 @@ document.getElementById("spotlight").innerHTML = `
     <span class="tag ${spot.status}">${STATUS[spot.status]}</span>
     <h3>${esc(spot.title)}</h3>
     <div class="genre">${spot.subtitle ? esc(spot.subtitle) + " · " : ""}${esc(spot.genre)}</div>
-    <p>${esc(spot.blurb)}</p>
+    ${spot.released ? `<div class="when">Released ${esc(spot.released)}</div>` : ""}
+    <p>${esc(spot.pitch || spot.blurb)}</p>
     <div class="btns">${linksHTML(spot)}</div>
   </div>`;
 
@@ -381,13 +403,14 @@ function renderGrid() {
         <span class="tag ${g.status}">${STATUS[g.status]}</span>
         <h3>${esc(g.title)}</h3>
         <div class="genre">${esc(g.genre)}</div>
+        ${g.released ? `<div class="when">Released ${esc(g.released)}</div>` : ""}
         <p>${esc(g.blurb)}</p>
         <div class="platforms">${g.platforms.map(p => `<span>${esc(p)}</span>`).join("")}</div>
         ${g.links && g.links.length ? `<div class="links">${linksHTML(g, true)}</div>` : ""}
       </div>
     </article>`);
   if (current === "all" || current === "dev") {
-    cards.push(`<div class="card next"><img src="assets/mark.svg" alt=""><h3>Next game</h3><p>Something new is always in the den. Follow along to see it first.</p></div>`);
+    cards.push(`<div class="card next"><img src="assets/mark.svg" alt=""><div><h3>Next game</h3><p>Something new is always in the den. Follow along to see it first.</p></div><a class="btn btn-ghost cut" href="#follow" style="margin-left:auto">Follow along</a></div>`);
   }
   document.getElementById("grid").innerHTML = cards.join("") || `<p class="empty">Nothing here yet.</p>`;
 }
