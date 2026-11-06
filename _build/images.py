@@ -9,16 +9,16 @@ MV = Path("D:/meat-vector/audits/2026-10-18")
 AW = Path("D:/a-thousand-wands")
 CT = Path("D:/Games/Corpse Tide/maps")
 
-CAP = Path("D:/site-capture/shots")
-SMD = Path("D:/site-capture/stock-market-dynasty/game/evidence")
+CAP = ROOT / "_src" / "shots"
+SMD = ROOT / "_src" / "shots" / "smd"
 STUDIO = (52, 304, 2552, 1768)   # Roblox Studio play viewport (crops editor chrome)
 # Real current gameplay only. Entries are a path or (path, crop box).
 SHOTS = {
   "age-breaker": [S/f"ss{i}.jpg" for i in (1,2,3,4,5,6,7,8)],
-  "stock-market-dynasty": [(SMD/"full-game-audit/live-v70-terminal.png", (0, 64, 2604, 1504)),
-                           (SMD/"full-game-audit/desktop-property-final.png", STUDIO),
-                           (SMD/"full-game-audit/desktop-trade-final.png", STUDIO),
-                           (SMD/"full-game-audit/final-Bots.png", STUDIO),
+  "stock-market-dynasty": [(SMD/"live-v70-terminal.png", (0, 64, 2604, 1504)),
+                           (SMD/"desktop-property-final.png", STUDIO),
+                           (SMD/"desktop-trade-final.png", STUDIO),
+                           (SMD/"final-Bots.png", STUDIO),
                            ROOT/"_src"/"smd-a.png"],
   "corpse-tide": [CAP/"ct/z4.png", CAP/"ct/b10.png", CAP/"ct/z3.png", CAP/"ct/keep-plan.png", CAP/"ct/keep-briefing.png", CAP/"ct/b07.png"],
   "a-thousand-wands": [CAP/"aw/s11.png", CAP/"aw/s04.png", CAP/"aw/s09.png", CAP/"aw/s13.png", CAP/"aw/01.png", CAP/"wands/00-fresh-menu-tree.png"],
