@@ -3,18 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Rare Jackal</title>
-<meta name="description" content="The Rare Jackal is a one-person game studio making strategy games with teeth. Every game, out now and on the way.">
+<title>The Rare Jackal · Strategy games with teeth</title>
+<meta name="description" content="The Rare Jackal is a one-person game studio. Age Breaker: Six Eras is out now on Steam for PC and Mac; more games on the way.">
 <link rel="canonical" href="https://rarejackal.com/">
-<meta name="theme-color" content="#0d0d12">
+<meta name="theme-color" content="#0b0b10">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Rare Jackal">
-<meta property="og:title" content="The Rare Jackal: strategy games with teeth">
-<meta property="og:description" content="A one-person game studio. Age Breaker: Six Eras is out now on Steam; more games on the way.">
+<meta property="og:title" content="The Rare Jackal · Strategy games with teeth">
+<meta property="og:description" content="The Rare Jackal is a one-person game studio. Age Breaker: Six Eras is out now on Steam for PC and Mac; more games on the way.">
 <meta property="og:url" content="https://rarejackal.com/">
 <meta property="og:image" content="https://rarejackal.com/assets/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@TheRareJackal">
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
@@ -23,210 +21,163 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#0d0d12; --bg-2:#15151d; --bg-3:#1f1f2a; --line:#2a2a38;
-  --ink:#f4f1ea; --muted:#a3a0b2; --amber:#ffb01f; --deep:#e07b12;
-  --display:"Chakra Petch",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif;
-  --cut:22px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
-.skip{position:absolute;left:-999px;top:8px;z-index:50;background:var(--amber);color:#16110a;padding:10px 14px;font-weight:600}
-.skip:focus{left:8px}
-section,[id]{scroll-margin-top:80px}
-::selection{background:var(--amber);color:#16110a}
-img,video,svg{display:block;max-width:100%}
-.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
-.eyebrow{font:600 12px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
-h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.02;letter-spacing:-.01em}
-.cut{clip-path:polygon(0 0,calc(100% - var(--cut)) 0,100% var(--cut),100% 100%,var(--cut) 100%,0 calc(100% - var(--cut)))}
-
-nav{position:sticky;top:0;z-index:20;background:rgba(13,13,18,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 18px var(--display);letter-spacing:.04em;text-transform:uppercase}
-.brand img{width:34px;height:34px}
-nav ul{display:flex;gap:28px;list-style:none;font-size:14px;font-weight:500}
-nav ul a{text-decoration:none;color:var(--muted)}
-nav ul a:hover{color:var(--amber)}
-
-.hero{position:relative;padding:80px 0 88px;overflow:hidden;border-bottom:1px solid var(--line)}
-.hero::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(55% 75% at 80% 45%,rgba(255,176,31,.15),transparent 70%),
-  repeating-linear-gradient(135deg,transparent 0 46px,rgba(255,255,255,.025) 46px 47px)}
-.hero .wrap{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
-.hero h1{font-size:clamp(50px,8vw,108px);text-transform:uppercase;margin:20px 0 24px}
-.hero h1 em{font-style:normal;color:var(--amber);display:block}
-.hero p.lede{font-size:20px;color:var(--muted);max-width:34ch}
-.hero .mark{width:100%;max-width:400px;justify-self:end;filter:drop-shadow(0 30px 60px rgba(224,123,18,.25));animation:rise 1s ease-out both}
-@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-.stats{display:flex;gap:36px;margin-top:34px;flex-wrap:wrap}
-.stats div b{display:block;font:700 40px/1 var(--display);color:var(--amber)}
-.stats div span{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
-
-.btns{display:flex;flex-wrap:wrap;gap:12px}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;font:700 14px var(--display);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;--cut:12px;border:0;cursor:pointer}
-.btn-primary{background:var(--amber);color:#16110a}
-.btn-primary:hover{background:#ffc24d}
-.btn-ghost{background:var(--bg-3);color:var(--ink)}
-a.btn-ghost:hover{background:#2a2a38}
-.btn-off{background:var(--bg-3);color:var(--muted);cursor:default}
-
-section{padding:96px 0}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:36px}
-.section-head h2{font-size:clamp(38px,5vw,60px);text-transform:uppercase;margin-top:14px}
-.section-head p{color:var(--muted);max-width:40ch}
-
-/* spotlight */
-.spot{display:grid;grid-template-columns:1.3fr 1fr;background:var(--bg-2);--cut:34px;margin-bottom:72px}
-.spot .media{background:#000;aspect-ratio:16/9;align-self:center}
-.spot video{width:100%;height:100%;object-fit:cover}
-.spot{align-items:stretch}
-.spot .body{padding:36px 36px 34px;display:flex;flex-direction:column;gap:12px}
-.spot h3{font-size:46px;text-transform:uppercase}
-.spot p{color:var(--muted)}
-.spot .btns{margin-top:auto}
-
-.tag{display:inline-block;align-self:flex-start;padding:6px 10px;font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;border:1px solid}
-.tag.out{background:rgba(255,176,31,.12);color:var(--amber);border-color:rgba(255,176,31,.4)}
-.tag.soon{background:rgba(95,227,192,.08);color:#5fe3c0;border-color:rgba(95,227,192,.35)}
-.tag.dev{background:rgba(255,255,255,.04);color:var(--muted);border-color:var(--line)}
-.genre{color:var(--amber);font-weight:600;font-size:14px;letter-spacing:.04em}
-
-/* filters */
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
-.filters button{font:600 13px var(--body);letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;background:var(--bg-2);color:var(--muted);border:1px solid var(--line);cursor:pointer}
-.filters button[aria-pressed="true"]{background:var(--amber);color:#16110a;border-color:var(--amber)}
-.filters button:hover:not([aria-pressed="true"]){color:var(--ink)}
-
-/* catalog */
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.card{background:var(--bg-2);display:flex;flex-direction:column;transition:transform .25s ease}
-.card:hover{transform:translateY(-4px)}
-.card .art img{transition:transform .5s ease}
-.card:hover .art img{transform:scale(1.04)}
-.card .when{font-size:13px;color:var(--muted)}
-.spot .when{font-size:14px;color:var(--muted)}
-.card .art{aspect-ratio:920/430;overflow:hidden;background:#000}
-.card .art img,.card .art svg{width:100%;height:100%;object-fit:cover}
-.card .body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
-.card h3{font-size:28px;text-transform:uppercase}
-.card p{color:var(--muted);font-size:15px}
-.card .platforms{display:flex;gap:6px;flex-wrap:wrap}
-.card .platforms span{font-size:12px;padding:3px 8px;background:var(--bg-3);color:var(--muted)}
-.card .links{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap}
-.card .links .btn{padding:10px 14px;font-size:12px;--cut:9px}
-.card.next{grid-column:1/-1;flex-direction:row;gap:24px;background:transparent;border:2px dashed var(--line);clip-path:none;align-items:center;justify-content:center;text-align:left;padding:28px 32px;min-height:0}
-.card.next:hover{transform:none}
-.card.next img{width:64px;opacity:.4;margin:0;flex:none}
-.card.next h3{font-size:24px;margin-bottom:4px}
-.card.next .art,.card.next .body{display:contents}
-.card.next h3{color:var(--muted)}
-.empty{color:var(--muted);padding:24px 0}
-
-/* about */
-.about{background:var(--bg-2);border-block:1px solid var(--line)}
-.about .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
-.about h2{font-size:clamp(38px,5vw,60px);text-transform:uppercase;margin-top:14px}
-.about .copy p{font-size:19px;color:var(--muted);margin-bottom:20px}
-.about .copy p strong{color:var(--ink);font-weight:600}
-.promises{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
-.promise{background:var(--bg-3);padding:22px;--cut:14px}
-.promise b{font:700 17px var(--display);text-transform:uppercase;display:block;margin-bottom:6px}
-.promise span{font-size:14px;color:var(--muted)}
-
-.follow{background:var(--amber);color:#16110a;padding:84px 0;position:relative;overflow:hidden}
-.follow::after{content:"";position:absolute;right:-60px;top:-50px;width:420px;height:420px;background:url(assets/mark.svg) center/contain no-repeat;opacity:.12;filter:grayscale(1) brightness(0)}
-.follow .wrap{position:relative;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
-.follow h2{font-size:clamp(40px,6vw,72px);text-transform:uppercase;max-width:16ch}
-.follow p{font-weight:500;margin-top:10px;max-width:42ch}
-.follow .btn{background:#16110a;color:var(--amber)}
-.follow .btn:hover{background:#000}
-
-.socials{display:grid;grid-template-columns:1fr 1fr;gap:10px;min-width:min(100%,340px)}
-.socials .btn{justify-content:center}
-.foot-social{display:flex;gap:20px;flex-wrap:wrap}
-.foot-social a{text-decoration:none;color:var(--muted)}
-.foot-social a:hover{color:var(--amber)}
-footer{padding:40px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
-footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-
-@media (max-width:980px){.grid{grid-template-columns:1fr 1fr}}
-@media (max-width:760px){
-  nav ul{display:none}
-  .hero{padding:48px 0 60px}
-  .hero .wrap,.spot,.about .wrap{grid-template-columns:1fr}
-  .hero .mark{justify-self:start;max-width:180px;order:-1}
-  .grid{grid-template-columns:1fr}
-  .spot .body{padding:26px 22px 30px}
-  .spot h3{font-size:34px}
-  .section-head{flex-direction:column;align-items:start}
-  .promises{grid-template-columns:1fr}
-  .card.next{flex-direction:column;text-align:center}
-  .card.next .btn{margin-left:0!important}
-  section{padding:64px 0}
-  .about .wrap{gap:20px}
-  .stats{gap:24px}
-}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
-</style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<a class="skip" href="#games">Skip to games</a>
-
-<nav>
+<a class="skip" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="The Rare Jackal home"><img src="assets/mark.svg" alt="">The Rare Jackal</a>
+    <a class="brand" href="./" aria-label="The Rare Jackal home"><img src="assets/mark.svg" alt="">The Rare Jackal</a>
     <ul>
       <li><a href="#games">Games</a></li>
-      <li><a href="#studio">Studio</a></li>
+      <li class="wide"><a href="#studio">Studio</a></li>
       <li><a href="#follow">Follow</a></li>
-      <li><a href="https://www.youtube.com/@RareJackal">YouTube</a></li>
+      <li class="wide"><a href="https://www.youtube.com/@RareJackal">YouTube</a></li>
     </ul>
   </div>
 </nav>
-
-<main id="top">
+<main id="main">
 <header class="hero">
+  <canvas aria-hidden="true"></canvas>
   <div class="wrap">
     <div>
-      <div class="eyebrow">Independent game studio</div>
-      <h1>Strategy games <em>with teeth.</em></h1>
-      <p class="lede">Every game The Rare Jackal makes, out now and on the way, in one place. Original worlds, original music, no ads, ever.</p>
-      <div class="stats" id="stats"></div>
+      <div class="eyebrow">Independent game studio <b>· Est. 2026</b></div>
+      <h1><span class="line"><span>Strategy</span></span><span class="line"><span>games</span></span><span class="line"><span>with teeth.</span></span></h1>
+      <p class="lede">One developer making every game, from the code to the soundtrack. Original worlds, original music, no ads, ever.</p>
+      <div class="stats">
+        <div><b data-count="6">6</b><span>Games</span></div>
+        <div><b data-count="2">2</b><span>Out now</span></div>
+        <div><b data-count="4">4</b><span>On the way</span></div>
+      </div>
     </div>
-    <img class="mark" src="assets/mark.svg" alt="The Rare Jackal mark: a faceted amber jackal head with a notched ear">
+    <div class="mark-wrap" aria-hidden="true"><div class="halo"></div><div class="ring"></div><div class="ring r2"></div><img src="assets/mark.svg" alt=""></div>
   </div>
+  <a class="scroll-cue" href="#games">Scroll</a>
 </header>
+
+<div class="marquee-clip" aria-hidden="true"><div class="marquee"><div class="track"><span>Age Breaker</span><span>✦</span><span>Stock Market Dynasty</span><span>✦</span><span>Corpse Tide</span><span>✦</span><span>A Thousand Wands</span><span>✦</span><span>Meat Vector</span><span>✦</span><span>Nightwinder</span><span>✦</span><span>Age Breaker</span><span>✦</span><span>Stock Market Dynasty</span><span>✦</span><span>Corpse Tide</span><span>✦</span><span>A Thousand Wands</span><span>✦</span><span>Meat Vector</span><span>✦</span><span>Nightwinder</span><span>✦</span></div></div></div>
 
 <section id="games">
   <div class="wrap">
-    <div class="section-head">
-      <div><div class="eyebrow">Spotlight</div><h2 id="spot-heading">Latest release</h2></div>
+    <div class="section-head rv">
+      <div><div class="eyebrow">01 <b>Spotlight</b></div><h2>Latest release</h2></div>
     </div>
-    <article class="spot cut" id="spotlight"></article>
-
-    <div class="section-head">
-      <div><div class="eyebrow">The catalog</div><h2>All games</h2></div>
-      <p>Released, coming soon and still in the den. New games land here first.</p>
-    </div>
-    <div class="filters" role="group" aria-label="Filter games" id="filters"></div>
-    <div class="grid" id="grid"></div>
+    <article class="spot cut rv" style="--accent:#ffb01f">
+      <div class="screen" data-trailer="assets/age-breaker-trailer.mp4">
+        <video src="assets/age-breaker-loop.mp4" poster="assets/trailer-poster.jpg" autoplay muted loop playsinline aria-label="Age Breaker gameplay"></video>
+        <button class="play" type="button" aria-label="Watch the Age Breaker trailer with sound"><i class="cut">Watch trailer</i></button>
+      </div>
+      <div class="body">
+        <span class="tag out">Out now</span>
+        <h3>Age Breaker</h3>
+        <div class="genre">Six Eras · Lane strategy</div>
+        <div class="when">Released October 30, 2026 · PC &amp; Mac (Steam), Android, iOS</div>
+        <p>Evolve your army from bone clubs to plasma blades and hold one lane against six eras of escalating war. Free demo on Steam.</p>
+        <div class="btns">
+<a class="btn btn-primary cut" href="https://store.steampowered.com/app/5431200/">Buy on Steam</a>
+<span class="btn btn-off cut" aria-disabled="true">Google Play · Soon</span>
+<span class="btn btn-off cut" aria-disabled="true">App Store · Soon</span>
+          <a class="btn btn-ghost cut" href="games/age-breaker/">Learn more</a>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
-<section class="about" id="studio">
+<section style="padding-top:0">
   <div class="wrap">
-    <div>
-      <div class="eyebrow">The studio</div>
-      <h2>One jackal.<br>No pack.</h2>
+    <div class="section-head rv">
+      <div><div class="eyebrow">02 <b>The catalog</b></div><h2>Every game</h2></div>
+      <p>Released, coming soon and still in the den. Tap a game to see what it's about.</p>
     </div>
-    <div class="copy">
+    <div class="filters rv" role="group" aria-label="Filter games"><button type="button" data-k="all" aria-pressed="true">All</button><button type="button" data-k="out" aria-pressed="false">Out now</button><button type="button" data-k="soon" aria-pressed="false">Coming soon</button><button type="button" data-k="dev" aria-pressed="false">In development</button></div>
+    <div class="grid">
+      <a class="card cut rv" data-d="0" data-status="out" href="games/age-breaker/" style="--accent:#ffb01f">
+        <div class="art"><img src="assets/age-breaker.jpg" alt="Age Breaker" loading="lazy"></div>
+        <div class="body">
+          <span class="tag out">Out now</span>
+          <h3>Age Breaker</h3>
+          <div class="genre">Lane strategy</div>
+          <div class="when">Released October 30, 2026</div>
+          <p>A one-lane strategy game of armies, defenses and evolution. Spend gold on a push now or save for the next age.</p>
+          <div class="chips"><span>PC &amp; Mac (Steam)</span><span>Android</span><span>iOS</span></div>
+          <div class="more">Explore</div>
+        </div>
+      </a>
+      <a class="card cut rv" data-d="90" data-status="out" href="games/stock-market-dynasty/" style="--accent:#3ee07a">
+        <div class="art"><img src="assets/stock-market-dynasty.jpg" alt="Stock Market Dynasty" loading="lazy"></div>
+        <div class="body">
+          <span class="tag out">Out now</span>
+          <h3>Stock Market Dynasty</h3>
+          <div class="genre">Trading tycoon</div>
+          
+          <p>Read the charts, go long or short and grow $100,000 into a trading empire in a live market with friends.</p>
+          <div class="chips"><span>Roblox</span></div>
+          <div class="more">Explore</div>
+        </div>
+      </a>
+      <a class="card cut rv" data-d="180" data-status="soon" href="games/corpse-tide/" style="--accent:#ff4b52">
+        <div class="art"><img src="assets/corpse-tide.jpg" alt="Corpse Tide" loading="lazy"></div>
+        <div class="body">
+          <span class="tag soon">Coming soon</span>
+          <h3>Corpse Tide</h3>
+          <div class="genre">Evacuation strategy</div>
+          
+          <p>Top-down horde defense where winning means getting people out. Thousands of infected, twelve campaigns and a map editor.</p>
+          <div class="chips"><span>PC &amp; Mac (Steam)</span></div>
+          <div class="more">Explore</div>
+        </div>
+      </a>
+      <a class="card cut rv" data-d="0" data-status="soon" href="games/a-thousand-wands/" style="--accent:#b98cff">
+        <div class="art"><img src="assets/a-thousand-wands.jpg" alt="A Thousand Wands" loading="lazy"></div>
+        <div class="body">
+          <span class="tag soon">Coming soon</span>
+          <h3>A Thousand Wands</h3>
+          <div class="genre">Spellcasting army defense</div>
+          
+          <p>Hold the line with sky-cast spells and a recruited army. Mix six elements and restore a shattered academy.</p>
+          <div class="chips"><span>PC &amp; Mac (Steam)</span></div>
+          <div class="more">Explore</div>
+        </div>
+      </a>
+      <a class="card cut rv" data-d="90" data-status="dev" href="games/meat-vector/" style="--accent:#3fd4e0">
+        <div class="art"><img src="assets/meat-vector.jpg" alt="Meat Vector" loading="lazy"></div>
+        <div class="body">
+          <span class="tag dev">In development</span>
+          <h3>Meat Vector</h3>
+          <div class="genre">3D action roguelite</div>
+          
+          <p>Weaponize the swarm. Grip and throw creatures, chain their momentum and turn corpses into ammunition.</p>
+          <div class="chips"><span>PC &amp; Mac</span></div>
+          <div class="more">Explore</div>
+        </div>
+      </a>
+      <a class="card cut rv" data-d="180" data-status="dev" href="games/nightwinder/" style="--accent:#e8c26a">
+        <div class="art"><img src="assets/nightwinder.jpg" alt="Nightwinder" loading="lazy"></div>
+        <div class="body">
+          <span class="tag dev">In development</span>
+          <h3>Nightwinder</h3>
+          <div class="genre">Music-driven roguelite</div>
+          
+          <p>A brass automaton fights a child&#x27;s fears to the rhythm of an unfinished lullaby. Your build is the song.</p>
+          <div class="chips"><span>PC &amp; Mac</span></div>
+          <div class="more">Explore</div>
+        </div>
+      </a>
+      <div class="next rv"><img src="assets/mark.svg" alt=""><div><h3>Next game</h3><p>Something new is always in the den. Follow along to see it first.</p></div><a class="btn btn-ghost cut" href="#follow">Follow along</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="studio" id="studio">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">03 <b>The studio</b></div>
+      <h2>One jackal.<br><em>No pack.</em></h2>
+    </div>
+    <div class="copy rv" data-d="120">
       <p><strong>The Rare Jackal is a one-person game studio.</strong> Design, code, art and music all come from the same desk, so every game ships the way it was meant to.</p>
-      <p>The focus is games you can sink your teeth into: lane battles, horde defense, spellcraft, rhythm, tycoons and the occasional strange experiment. Games stay small enough to finish and deep enough to keep playing.</p>
+      <p>The focus is games you can sink your teeth into: lane battles, horde defense, spellcraft, rhythm, tycoons and the occasional strange experiment. Every PC game runs on Windows and Mac.</p>
       <div class="promises">
         <div class="promise cut"><b>No ads</b><span>Not now, not later.</span></div>
         <div class="promise cut"><b>No gacha</b><span>No loot boxes or energy timers.</span></div>
@@ -235,14 +186,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
   </div>
 </section>
+</main>
 
 <div class="follow" id="follow">
+  <img class="ghost" src="assets/mark.svg" alt="">
   <div class="wrap">
-    <div>
+    <div class="rv">
       <h2>Be first to the next one</h2>
       <p>New games, trailers, devlogs and playtest invites. Pick your feed.</p>
     </div>
-    <div class="socials">
+    <div class="socials rv" data-d="120">
       <a class="btn cut" href="https://www.youtube.com/@RareJackal">YouTube</a>
       <a class="btn cut" href="https://x.com/TheRareJackal">X</a>
       <a class="btn cut" href="https://www.instagram.com/therarejackaldev/">Instagram</a>
@@ -250,12 +203,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
   </div>
 </div>
-
-</main>
-
 <footer>
   <div class="wrap">
-    <span>© <span id="yr">2026</span> The Rare Jackal</span>
+    <span>© 2026 The Rare Jackal · Strategy games with teeth.</span>
     <nav class="foot-social" aria-label="Social">
       <a href="https://www.youtube.com/@RareJackal">YouTube</a>
       <a href="https://x.com/TheRareJackal">X</a>
@@ -264,164 +214,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </nav>
   </div>
 </footer>
-
-<!-- Placeholder art for games without key art yet -->
-<template id="art-corpse-tide">
-  <svg viewBox="0 0 920 430" role="img" aria-label="Corpse Tide: a city grid overrun from the east">
-    <defs>
-      <linearGradient id="ct" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f1a1a"/><stop offset="1" stop-color="#1c0f10"/></linearGradient>
-      <radialGradient id="ctg" cx=".82" cy=".55" r=".55"><stop offset="0" stop-color="#c2262e" stop-opacity=".55"/><stop offset="1" stop-color="#c2262e" stop-opacity="0"/></radialGradient>
-      <pattern id="blk" width="60" height="60" patternUnits="userSpaceOnUse"><rect x="6" y="6" width="44" height="44" fill="#22302f"/></pattern>
-    </defs>
-    <rect width="920" height="430" fill="url(#ct)"/><rect width="920" height="430" fill="url(#blk)" opacity=".75"/><rect width="920" height="430" fill="url(#ctg)"/>
-    <g fill="#ff4b52"><circle cx="700" cy="210" r="5"/><circle cx="742" cy="240" r="5"/><circle cx="770" cy="190" r="5"/><circle cx="812" cy="260" r="5"/><circle cx="660" cy="270" r="5"/><circle cx="840" cy="210" r="5"/><circle cx="726" cy="300" r="5"/><circle cx="790" cy="320" r="5"/><circle cx="620" cy="220" r="5"/><circle cx="868" cy="290" r="5"/></g>
-    <path d="M120 360 L300 360 L300 330" stroke="#5fe3c0" stroke-width="6" fill="none"/><circle cx="120" cy="360" r="14" fill="#5fe3c0"/>
-    <text x="60" y="110" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="84" fill="#f4f1ea">CORPSE TIDE</text>
-    <text x="64" y="150" font-family="Inter, sans-serif" font-size="22" fill="#9fb8b3" letter-spacing="4">EVACUATE PORT MERCY</text>
-  </svg>
-</template>
-
-<script>
-/*
-  THE GAME LIST. To add a future game, copy one entry and edit it.
-  status: "out" (released), "soon" (announced / wishlist), "dev" (in development)
-  art: an image path in assets/, or "#template-id" for built-in placeholder art
-  links: [{label, url}]  — a link with no url shows as a disabled "coming soon" button
-  spotlight: true puts the game in the big feature slot (first one wins)
-*/
-const GAMES = [
-  {
-    id: "age-breaker", title: "Age Breaker", subtitle: "Six Eras",
-    status: "out", released: "October 30, 2026", genre: "Lane strategy",
-    platforms: ["PC (Steam)", "Android", "iOS"],
-    blurb: "Evolve your army from bone clubs to plasma blades and hold a single lane against everything the next age throws at you. Draft cards, fight a 36-battle campaign across six eras, and play free to start with one purchase for everything.",
-    art: "assets/age-breaker.jpg",
-    video: "assets/age-breaker-trailer.mp4", poster: "assets/trailer-poster.jpg",
-    links: [
-      { label: "Buy on Steam", url: "https://store.steampowered.com/app/5431200/" },
-      { label: "Google Play · Soon" },
-      { label: "App Store · Soon" }
-    ],
-    pitch: "Evolve your army from bone clubs to plasma blades and hold one lane against six eras of escalating war. Free to start, one purchase for everything.",
-    spotlight: true
-  },
-  {
-    id: "stock-market-dynasty", title: "Stock Market Dynasty",
-    status: "out", genre: "Trading tycoon",
-    platforms: ["Roblox"],
-    blurb: "Read the charts, go long or short and grow $100,000 into a trading empire in a live market with friends.",
-    art: "assets/stock-market-dynasty.jpg",
-    links: [{ label: "Play on Roblox", url: "https://www.roblox.com/games/107712864019984/Stock-Market-Dynasty" }]
-  },
-  {
-    id: "corpse-tide", title: "Corpse Tide",
-    status: "soon", genre: "Evacuation strategy",
-    platforms: ["PC (Steam)"],
-    blurb: "Top-down horde defense where winning means getting people out. Thousands of infected, twelve campaigns across Port Mercy, and a map editor with Workshop support.",
-    art: "#art-corpse-tide",
-    links: [{ label: "Steam · Soon" }]
-  },
-  {
-    id: "a-thousand-wands", title: "A Thousand Wands",
-    status: "soon", genre: "Spellcasting army defense",
-    platforms: ["PC (Steam)", "Mac"],
-    blurb: "Hold the line with sky-cast spells and a recruited army. Mix six elements into new reactions, bind magic weapons to your allies and restore a shattered academy one battle at a time.",
-    art: "assets/a-thousand-wands.jpg",
-    links: [{ label: "Steam · Soon" }]
-  },
-  {
-    id: "meat-vector", title: "Meat Vector",
-    status: "dev", genre: "3D action roguelite",
-    platforms: ["PC"],
-    blurb: "Weaponize the swarm. Grip and throw creatures, chain their momentum, orbit the dead as shields and turn corpses into ammunition through three industrial nightmares.",
-    art: "assets/meat-vector.jpg",
-    links: []
-  },
-  {
-    id: "nightwinder", title: "Nightwinder",
-    status: "dev", genre: "Music-driven arena roguelite",
-    platforms: ["PC", "Mac"],
-    blurb: "Pick one of twelve musicians and fight wave after wave while the arranger turns your choices into a song. Every note you earn is an attack.",
-    art: "assets/nightwinder.jpg",
-    links: []
-  }
-];
-
-const STATUS = { out: "Out now", soon: "Coming soon", dev: "In development" };
-const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-
-function artHTML(g) {
-  if (g.art && g.art.startsWith("#")) {
-    const t = document.querySelector(g.art);
-    return t ? t.innerHTML : "";
-  }
-  return g.art ? `<img src="${esc(g.art)}" alt="${esc(g.title)} key art" loading="lazy">` : "";
-}
-function linksHTML(g, small) {
-  return (g.links || []).map(l => l.url
-    ? `<a class="btn ${small ? "btn-ghost" : "btn-primary"} cut" href="${esc(l.url)}">${esc(l.label)}</a>`
-    : `<span class="btn btn-off cut" aria-disabled="true">${esc(l.label)}</span>`).join("");
-}
-
-// spotlight
-const spot = GAMES.find(g => g.spotlight) || GAMES.find(g => g.status === "out") || GAMES[0];
-document.getElementById("spotlight").innerHTML = `
-  <div class="media">${spot.video
-    ? `<video src="${esc(spot.video)}" poster="${esc(spot.poster || "")}" controls playsinline preload="none" aria-label="${esc(spot.title)} trailer"></video>`
-    : artHTML(spot)}</div>
-  <div class="body">
-    <span class="tag ${spot.status}">${STATUS[spot.status]}</span>
-    <h3>${esc(spot.title)}</h3>
-    <div class="genre">${spot.subtitle ? esc(spot.subtitle) + " · " : ""}${esc(spot.genre)}</div>
-    ${spot.released ? `<div class="when">Released ${esc(spot.released)}</div>` : ""}
-    <p>${esc(spot.pitch || spot.blurb)}</p>
-    <div class="btns">${linksHTML(spot)}</div>
-  </div>`;
-
-// stats
-const count = s => GAMES.filter(g => g.status === s).length;
-document.getElementById("stats").innerHTML = [
-  [GAMES.length, "Games"], [count("out"), "Out now"], [count("soon") + count("dev"), "On the way"]
-].map(([n, l]) => `<div><b>${n}</b><span>${l}</span></div>`).join("");
-
-// filters + grid
-const FILTERS = [["all", "All"], ["out", "Out now"], ["soon", "Coming soon"], ["dev", "In development"]];
-let current = "all";
-try { const saved = localStorage.getItem("trj-filter"); if (FILTERS.some(f => f[0] === saved)) current = saved; } catch (e) {}
-
-function renderFilters() {
-  document.getElementById("filters").innerHTML = FILTERS
-    .filter(([k]) => k === "all" || count(k) > 0)
-    .map(([k, l]) => `<button type="button" data-k="${k}" aria-pressed="${k === current}">${l}</button>`).join("");
-}
-function renderGrid() {
-  const list = GAMES.filter(g => current === "all" || g.status === current);
-  const cards = list.map(g => `
-    <article class="card cut" id="${esc(g.id)}">
-      <div class="art">${artHTML(g)}</div>
-      <div class="body">
-        <span class="tag ${g.status}">${STATUS[g.status]}</span>
-        <h3>${esc(g.title)}</h3>
-        <div class="genre">${esc(g.genre)}</div>
-        ${g.released ? `<div class="when">Released ${esc(g.released)}</div>` : ""}
-        <p>${esc(g.blurb)}</p>
-        <div class="platforms">${g.platforms.map(p => `<span>${esc(p)}</span>`).join("")}</div>
-        ${g.links && g.links.length ? `<div class="links">${linksHTML(g, true)}</div>` : ""}
-      </div>
-    </article>`);
-  if (current === "all" || current === "dev") {
-    cards.push(`<div class="card next"><img src="assets/mark.svg" alt=""><div><h3>Next game</h3><p>Something new is always in the den. Follow along to see it first.</p></div><a class="btn btn-ghost cut" href="#follow" style="margin-left:auto">Follow along</a></div>`);
-  }
-  document.getElementById("grid").innerHTML = cards.join("") || `<p class="empty">Nothing here yet.</p>`;
-}
-document.getElementById("filters").addEventListener("click", e => {
-  const b = e.target.closest("button"); if (!b) return;
-  current = b.dataset.k;
-  try { localStorage.setItem("trj-filter", current); } catch (e) {}
-  renderFilters(); renderGrid();
-});
-renderFilters(); renderGrid();
-document.getElementById("yr").textContent = new Date().getFullYear();
-</script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
