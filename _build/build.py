@@ -8,6 +8,19 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from games import GAMES  # noqa: E402
+import hashlib, re
+
+_ASSET = re.compile(r"""((?:\.\./\.\./)?assets/[A-Za-z0-9_./-]+\.(?:jpg|png|svg|css|js|mp4))(?=["')\s])""")
+
+
+def bust(html):
+    """Append ?v=<content hash> to local asset links so CDN caches refresh on change."""
+    def sub(m):
+        path = ROOT / m.group(1).replace("../../", "")
+        if not path.exists():
+            return m.group(1)
+        return m.group(1) + "?v=" + hashlib.md5(path.read_bytes()).hexdigest()[:8]
+    return _ASSET.sub(sub, html)
 
 SITE = "https://rarejackal.com"
 SOCIALS = [
@@ -222,7 +235,7 @@ def build_home():
 </main>
 
 """ + follow("") + footer("")
-    (ROOT / "index.html").write_text(html, encoding="utf-8")
+    (ROOT / "index.html").write_text(bust(html), encoding="utf-8")
 
 
 def build_game(g, idx):
@@ -315,7 +328,7 @@ def build_game(g, idx):
 """ + follow(root) + footer(root)
     d = ROOT / "games" / slug
     d.mkdir(parents=True, exist_ok=True)
-    (d / "index.html").write_text(html, encoding="utf-8")
+    (d / "index.html").write_text(bust(html), encoding="utf-8")
 
 
 if __name__ == "__main__":
