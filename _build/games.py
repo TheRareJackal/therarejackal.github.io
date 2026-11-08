@@ -38,7 +38,7 @@ GAMES = [
         "poster": "assets/trailer-poster.jpg",
         "links": [
             {"label": "Buy on Steam", "url": "https://store.steampowered.com/app/5431200/"},
-            {"label": "Google Play · Soon"},
+            {"label": "Get it on Google Play", "url": "https://play.google.com/store/apps/details?id=io.exodata.agebreaker"},
             {"label": "App Store · Soon"},
         ],
         "spotlight": True,
