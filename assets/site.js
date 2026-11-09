@@ -102,4 +102,14 @@
       requestAnimationFrame(tick); };
     tick();
   }
+  // pass ad UTM tags through to store links (Play via install referrer, Steam via query)
+  const q = new URLSearchParams(location.search), utm = {};
+  for (const k of ["utm_source", "utm_medium", "utm_campaign", "utm_content"]) if (q.get(k)) utm[k] = q.get(k);
+  if (Object.keys(utm).length) {
+    const tag = new URLSearchParams(utm).toString();
+    document.querySelectorAll('a[href*="play.google.com/store/apps/details"]').forEach(a => {
+      const u = new URL(a.href); u.searchParams.set("referrer", tag); a.href = u.toString(); });
+    document.querySelectorAll('a[href*="store.steampowered.com/app/"]').forEach(a => {
+      const u = new URL(a.href); for (const [k, v] of Object.entries(utm)) u.searchParams.set(k, v); a.href = u.toString(); });
+  }
 })();
