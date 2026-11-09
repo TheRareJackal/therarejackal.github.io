@@ -16,8 +16,8 @@ GAMES = [
         "platforms": ["PC & Mac (Steam)", "Android", "iOS"],
         "card": "assets/age-breaker.jpg",
         "tagline": "From bone clubs to plasma blades. Hold the lane.",
-        "blurb": "A one-lane strategy game of armies, defenses and evolution. Spend gold on a push now or save for the next age.",
-        "pitch": "Evolve your army from bone clubs to plasma blades and hold one lane against six eras of escalating war. Free demo on Steam.",
+        "blurb": "A one-lane strategy game of armies, defenses and evolution. Spend gold on a push now or save for the next age. Free to start on Android, free demo on Steam.",
+        "pitch": "Evolve your army from bone clubs to plasma blades and hold one lane against six eras of escalating war. Free to start on Android, free demo on Steam.",
         "concept": [
             "Age Breaker is a one-lane war across six eras of history and beyond. Every second you choose between spending gold on a push now or banking it to evolve into the next age, where your clubs become rifles, your rifles become mechs and the enemy is making the same bet.",
             "Lead one of eight leaders, draft cards before each battle, raise turrets on your fortress and call down specials when the line breaks. Tactics that win in the Stone Age get you overrun in the Iron Era.",
@@ -38,7 +38,7 @@ GAMES = [
         "poster": "assets/trailer-poster.jpg",
         "links": [
             {"label": "Buy on Steam", "url": "https://store.steampowered.com/app/5431200/"},
-            {"label": "Get it on Google Play", "url": "https://play.google.com/store/apps/details?id=io.exodata.agebreaker"},
+            {"label": "Free to start on Google Play", "url": "https://play.google.com/store/apps/details?id=io.exodata.agebreaker"},
             {"label": "App Store · Soon"},
         ],
         "spotlight": True,
