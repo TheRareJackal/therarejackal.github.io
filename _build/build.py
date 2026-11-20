@@ -42,7 +42,7 @@ def head(title, desc, url, image, root):
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{url}">
-<meta name="theme-color" content="#141412">
+<meta name="theme-color" content="#101114">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Rare Jackal">
 <meta property="og:title" content="{e(title)}">
@@ -54,9 +54,6 @@ def head(title, desc, url, image, root):
 <link rel="icon" href="{root}assets/mark.svg" type="image/svg+xml">
 <link rel="icon" href="{root}assets/icon-512.png" type="image/png" sizes="512x512">
 <link rel="apple-touch-icon" href="{root}assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{root}assets/site.css">
 </head>
 """
@@ -149,18 +146,22 @@ def build_home():
                 "The Rare Jackal is an independent, one-person development studio for games, software, and interactive experiments.",
                 SITE + "/", SITE + "/assets/og.png", "")
     html += '<body class="home">\n' + nav("", True) + f"""<main id="main">
-<header class="masthead wrap" id="studio">
-  <h1>The Rare Jackal</h1>
-  <p>I write software, make games, and compose their soundtracks. My current projects include JStack, a browser, and Age Breaker, a strategy game.</p>
+<header class="masthead" id="studio">
+  <div class="wrap masthead-inner">
+    <h1>The Rare<br>Jackal</h1>
+    <p>I make games and write their music. My other project is JStack, a Mac browser that puts related pages side by side.</p>
+    <nav class="project-links" aria-label="Browse projects"><a href="#games">Browse games</a><a href="#software">Explore software</a></nav>
+    <a class="art-credit" href="games/feed-a-black-hole/">Art from <i>Feed a Black Hole</i></a>
+  </div>
 </header>
 <section class="release wrap" aria-labelledby="release-title">
   <div class="release-art">
     <video src="{spot['trailer']}" poster="{spot['card']}" controls preload="none" playsinline aria-label="{e(spot['title'])} trailer"></video>
   </div>
   <div class="release-copy">
-    <p class="kind">Featured game</p>
+    <p class="kind">Featured release</p>
     <h2 id="release-title">{e(spot['title'])}<small>{e(spot['subtitle'])}</small></h2>
-    <p>{e(spot['pitch'])}</p>
+    <p>{e(spot.get('feature_copy', spot['pitch']))}</p>
     <div class="release-links">
       <a href="games/{spot['slug']}/">Game details</a>
       {store_links}

@@ -2,7 +2,7 @@
 SOFTWARE = [
     {
         "name": "JStack",
-        "description": "A browser for working with several pages at once. Open sites in side-by-side cards, group them by project, and zoom out to find the page you need.",
+        "description": "Keep a reference page open beside the page you’re working on. JStack groups browser cards by project and lets you zoom out to see the whole workspace.",
         "kind": "Browser workspace",
         "platform": "macOS",
         "status": "In development",

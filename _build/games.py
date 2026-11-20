@@ -15,7 +15,7 @@ GAMES = [
         "accent": "#ffb01f",
         "platforms": ["PC & Mac (Steam)", "Android", "iOS"],
         "card": "assets/age-breaker.jpg",
-        "tagline": "From bone clubs to plasma blades. Hold the lane.",
+        "tagline": "Your first soldiers carry clubs. Six eras later, that same lane is full of mechs.",
         "blurb": "A one-lane strategy game of armies, defenses and evolution. Spend gold on a push now or save for the next age. Free to start on Android, free demo on Steam.",
         "pitch": "Evolve your army from bone clubs to plasma blades and hold one lane against six eras of escalating war. Free to start on Android, free demo on Steam.",
         "concept": [
@@ -41,6 +41,7 @@ GAMES = [
             {"label": "Free to start on Google Play", "url": "https://play.google.com/store/apps/details?id=io.exodata.agebreaker"},
             {"label": "App Store · Soon"},
         ],
+        "feature_copy": "Spend your gold on another wave of soldiers, or save it for the jump from spears to rifles. The army across the lane is making the same call.",
         "spotlight": True,
     },
     {
@@ -51,7 +52,7 @@ GAMES = [
         "accent": "#3ee07a",
         "platforms": ["Roblox"],
         "card": "assets/stock-market-dynasty.jpg",
-        "tagline": "$100,000. One market. Build a dynasty.",
+        "tagline": "You start with $100,000 and a trading terminal. Your friends trade on the same market.",
         "blurb": "Read the charts, go long or short and grow $100,000 into a trading empire in a live market with friends.",
         "concept": [
             "Stock Market Dynasty puts a full trading terminal inside Roblox. Start with $100,000, watch a living market of fictional companies move in real time, and decide when to buy, short, take profit or cut your losses.",
@@ -78,7 +79,7 @@ GAMES = [
         "accent": "#8b5cff",
         "platforms": ["Roblox"],
         "card": "assets/feed-a-black-hole.jpg",
-        "tagline": "Harvest. Feed. Collapse.",
+        "tagline": "Everyone on the server feeds the same black hole.",
         "blurb": "Chop, mine and haul with your whole server to feed one tiny black hole until it caves in, then roll what it becomes next.",
         "concept": [
             "What happens when a whole server feeds one tiny black hole? Chop Starwood, mine Moonstone, pull orbital salvage and drill Meteorite Cores, then carry your load back to the hub and watch the hole grow.",
@@ -105,7 +106,7 @@ GAMES = [
         "accent": "#ff4b52",
         "platforms": ["PC & Mac (Steam)"],
         "card": "assets/corpse-tide.jpg",
-        "tagline": "You can't save the city. Save the people.",
+        "tagline": "Keep the streets open long enough for civilians to reach the drop-off zones.",
         "blurb": "Top-down horde defense where winning means getting people out. Thousands of infected, twelve campaigns and a map editor.",
         "concept": [
             "Port Mercy is falling. Corpse Tide is a top-down evacuation strategy game where the goal isn't to kill every infected, it's to get as many civilians as possible to the drop-off zones before the tide swallows the streets.",
@@ -132,7 +133,7 @@ GAMES = [
         "accent": "#b98cff",
         "platforms": ["PC & Mac (Steam)"],
         "card": "assets/a-thousand-wands.jpg",
-        "tagline": "Hold the line. Relight the road.",
+        "tagline": "Your recruits fight on the ground while you cast from above.",
         "blurb": "Hold the line with sky-cast spells and a recruited army. Mix six elements and restore a shattered academy.",
         "concept": [
             "The Wandfall broke the academy and left its lantern road dark. Your wizard stays put while enemy formations advance, and every spell is a committed sky strike with weight, travel time and a recovery window. Lead your targets, interrupt their casters and let your recruits cover the gaps.",
@@ -160,7 +161,7 @@ GAMES = [
         "platforms": ["PC & Mac"],
         "card": "assets/meat-vector.jpg",
         "tagline": "Turn the crowd into ammunition.",
-        "blurb": "Turn the crowd into ammunition. Push, pull and launch the swarm, slide and wall run, and break out of three industrial nightmares.",
+        "blurb": "Throw enemies into each other, slide under the swarm, and wall-run across three industrial sites.",
         "concept": [
             "Meat Vector is a single-player 3D action roguelite about turning the crowd into ammunition. Grip creatures, throw them, link their momentum and use the swarm itself as your weapon.",
             "Start each run with one tool, Bellows to push, Undertow to pull or Gravejack to launch, and find the rest as you go. Slide, wall run and break out of three industrial nightmares. It's for adults, and it's still in the workshop.",
@@ -186,7 +187,7 @@ GAMES = [
         "accent": "#e8c26a",
         "platforms": ["PC & Mac"],
         "card": "assets/nightwinder.jpg",
-        "tagline": "Build your song. Survive each wave.",
+        "tagline": "The attacks you choose become parts of the soundtrack.",
         "blurb": "Choose one of twelve musicians and survive twelve waves while your choices are arranged into a song. Every note is an attack.",
         "concept": [
             "Nightwinder is a music-driven action roguelite. Choose one of twelve musicians, step into a single large arena and survive twelve waves, ending with a guardian. Your notes attack automatically, in time with the music.",
