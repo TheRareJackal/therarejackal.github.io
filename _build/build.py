@@ -150,14 +150,16 @@ def build_home():
                 SITE + "/", SITE + "/assets/og.png", "")
     html += "<body>\n" + nav("", True) + f"""<main id="main">
 <header class="hero">
+  <canvas aria-hidden="true"></canvas>
   <div class="wrap">
     <div>
       <div class="eyebrow">Independent game studio <b>· Est. 2026</b></div>
       <h1>Strategy games <em>with teeth.</em></h1>
       <p class="lede">One developer making every game, from the code to the soundtrack. Original worlds, original music, no ads, ever.</p>
       <div class="btns"><a class="btn btn-primary" href="#games">See the games</a><a class="btn btn-ghost" href="#follow">Follow along</a></div>
+      <div class="stats"><div><b>{len(GAMES)}</b><span>Games</span></div><div><b>{sum(g["status"] == "out" for g in GAMES)}</b><span>Out now</span></div><div><b>{sum(g["status"] != "out" for g in GAMES)}</b><span>On the way</span></div></div>
     </div>
-    <div class="mark-wrap" aria-hidden="true"><img src="assets/mark.svg" alt=""></div>
+    <div class="mark-wrap" aria-hidden="true"><div class="halo"></div><div class="ring"></div><img src="assets/mark.svg" alt=""></div>
   </div>
 </header>
 

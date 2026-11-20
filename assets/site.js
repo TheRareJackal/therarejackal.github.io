@@ -57,6 +57,25 @@
       if (e.key === "Escape") close(); if (e.key === "ArrowLeft") show(i - 1); if (e.key === "ArrowRight") show(i + 1); });
   }
 
+  // a few slow embers drifting up the home hero
+  const cv = $(".hero canvas");
+  if (cv && !reduce) {
+    const ctx = cv.getContext("2d"); let W, H; const P = [];
+    const size = () => { const d = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); };
+    const spawn = y => ({ x: Math.random() * W, y: y ?? H + 10, r: Math.random() * 1.6 + .5, s: Math.random() * .3 + .12, w: Math.random() * 6.3, a: Math.random() * .45 + .15 });
+    size(); addEventListener("resize", size);
+    for (let k = 0, n = Math.round(Math.min(40, W / 30)); k < n; k++) P.push(spawn(Math.random() * H));
+    let run = true; new IntersectionObserver(([e]) => run = e.isIntersecting).observe(cv);
+    const tick = () => {
+      if (run) { ctx.clearRect(0, 0, W, H);
+        for (const p of P) { p.y -= p.s; p.w += .015; p.x += Math.sin(p.w) * .25;
+          if (p.y < -10) Object.assign(p, spawn());
+          ctx.beginPath(); ctx.fillStyle = `rgba(255,${160 + (p.r * 25 | 0)},50,${p.a * Math.min(1, p.y / H * 1.5)})`;
+          ctx.arc(p.x, p.y, p.r, 0, 7); ctx.fill(); } }
+      requestAnimationFrame(tick); };
+    tick();
+  }
+
   // pass ad UTM tags through to store links (Play via install referrer, Steam via query)
   const q = new URLSearchParams(location.search), utm = {};
   for (const k of ["utm_source", "utm_medium", "utm_campaign", "utm_content"]) if (q.get(k)) utm[k] = q.get(k);
