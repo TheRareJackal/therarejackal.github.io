@@ -16,32 +16,6 @@
     $$(".rv").forEach((el, i) => { el.style.transitionDelay = (el.dataset.d || 0) + "ms"; io.observe(el); });
   } else $$(".rv").forEach(el => el.classList.add("in"));
 
-  // count-up stats
-  $$("[data-count]").forEach(el => {
-    const n = +el.dataset.count; if (reduce) { el.textContent = n; return; }
-    let t0; const step = t => { t0 ??= t; const p = Math.min(1, (t - t0) / 1200);
-      el.textContent = Math.round(n * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
-    setTimeout(() => requestAnimationFrame(step), 700);
-  });
-
-  // card tilt + glow
-  if (!reduce && matchMedia("(hover: hover)").matches) {
-    $$(".card").forEach(c => {
-      c.addEventListener("pointermove", e => {
-        const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-        c.style.setProperty("--mx", x * 100 + "%"); c.style.setProperty("--my", y * 100 + "%");
-        c.style.transform = `rotateX(${(0.5 - y) * 6}deg) rotateY(${(x - 0.5) * 8}deg) translateY(-4px)`;
-      });
-      c.addEventListener("pointerleave", () => { c.style.transform = ""; });
-    });
-    // mark parallax
-    const mark = $(".mark-wrap img");
-    if (mark) addEventListener("pointermove", e => {
-      const x = e.clientX / innerWidth - 0.5, y = e.clientY / innerHeight - 0.5;
-      mark.style.transform = `translate(${x * -18}px, ${y * -18}px) rotate(${x * -4}deg)`;
-    });
-  }
-
   // filters
   const fb = $(".filters");
   if (fb) {
@@ -83,25 +57,6 @@
       if (e.key === "Escape") close(); if (e.key === "ArrowLeft") show(i - 1); if (e.key === "ArrowRight") show(i + 1); });
   }
 
-  // ember field on the home hero
-  const cv = $(".hero canvas");
-  if (cv && !reduce) {
-    const ctx = cv.getContext("2d"); let W, H, P = [];
-    const size = () => { const d = Math.min(devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); };
-    const spawn = (y) => ({ x: Math.random() * W, y: y ?? H + 10, r: Math.random() * 2 + .6, s: Math.random() * .5 + .2, w: Math.random() * 2 * Math.PI, a: Math.random() * .6 + .25 });
-    size(); addEventListener("resize", size);
-    const N = Math.round(Math.min(90, W / 14)); for (let k = 0; k < N; k++) P.push(spawn(Math.random() * H));
-    let run = true; new IntersectionObserver(([e]) => run = e.isIntersecting).observe(cv);
-    const tick = () => {
-      if (run) { ctx.clearRect(0, 0, W, H);
-        for (const p of P) { p.y -= p.s; p.w += .02; p.x += Math.sin(p.w) * .3;
-          if (p.y < -10) Object.assign(p, spawn());
-          const g = p.a * Math.min(1, p.y / H * 1.4);
-          ctx.beginPath(); ctx.fillStyle = `rgba(255,${150 + (p.r * 30 | 0)},40,${g})`; ctx.shadowColor = "#ffb01f"; ctx.shadowBlur = 8;
-          ctx.arc(p.x, p.y, p.r, 0, 7); ctx.fill(); } }
-      requestAnimationFrame(tick); };
-    tick();
-  }
   // pass ad UTM tags through to store links (Play via install referrer, Steam via query)
   const q = new URLSearchParams(location.search), utm = {};
   for (const k of ["utm_source", "utm_medium", "utm_campaign", "utm_content"]) if (q.get(k)) utm[k] = q.get(k);
