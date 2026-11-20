@@ -41,7 +41,7 @@ def head(title, desc, url, image, root):
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{url}">
-<meta name="theme-color" content="#0b0b10">
+<meta name="theme-color" content="#141412">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Rare Jackal">
 <meta property="og:title" content="{e(title)}">
@@ -55,7 +55,7 @@ def head(title, desc, url, image, root):
 <link rel="apple-touch-icon" href="{root}assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{root}assets/site.css">
 </head>
 """
@@ -70,25 +70,24 @@ def nav(root, home):
   <div class="wrap">
     <a class="brand" href="{root or './'}" aria-label="The Rare Jackal home"><img src="{root}assets/mark.svg" alt="">The Rare Jackal</a>
     <ul>
-      <li><a href="{g}">Games</a></li>
-      <li class="wide"><a href="{s}">Studio</a></li>
+      <li><a href="{g}">Work</a></li>
+      <li><a href="{s}">Studio</a></li>
       <li><a href="{f}">Follow</a></li>
-      <li class="wide"><a href="https://www.youtube.com/@RareJackal">YouTube</a></li>
     </ul>
   </div>
 </nav>
 """
 
 
-def follow(root):
+def follow():
     btns = "\n".join(f'      <a class="btn" href="{u}">{n}</a>' for n, u in SOCIALS)
     return f"""<div class="follow" id="follow">
   <div class="wrap">
-    <div class="rv">
-      <h2>Be first to the next one</h2>
-      <p>New games, trailers, devlogs and playtest invites. Pick your feed.</p>
+    <div>
+      <h2>Follow the studio</h2>
+      <p>Releases, devlogs, and a look at what’s in progress.</p>
     </div>
-    <div class="socials rv" data-d="120">
+    <div class="socials">
 {btns}
     </div>
   </div>
@@ -100,7 +99,7 @@ def footer(root):
     links = "\n".join(f'      <a href="{u}">{n}</a>' for n, u in SOCIALS)
     return f"""<footer>
   <div class="wrap">
-    <span>© 2026 The Rare Jackal · Strategy games with teeth.</span>
+    <span>© 2026 The Rare Jackal</span>
     <nav class="foot-social" aria-label="Social">
 {links}
     </nav>
@@ -128,8 +127,8 @@ def chips(g):
     return "".join(f"<span>{e(p)}</span>" for p in g["platforms"])
 
 
-def card(g, i):
-    return f"""      <a class="card rv" data-d="{(i % 3) * 60}" data-status="{g['status']}" href="games/{g['slug']}/" style="--accent:{g['accent']}">
+def card(g):
+    return f"""      <a class="card" data-status="{g['status']}" href="games/{g['slug']}/" style="--accent:{g['accent']}">
         <div class="art"><img src="{g['card']}" alt="{e(g['title'])}" loading="lazy"></div>
         <div class="body">
           <div class="top"><span class="genre">{e(g['genre'])}</span><span class="tag {g['status']}">{STATUS[g['status']]}</span></div>
@@ -145,33 +144,31 @@ def build_home():
     filters = [("all", "All")] + [(k, v) for k, v in STATUS.items() if any(g["status"] == k for g in GAMES)]
     fbtns = "".join(f'<button type="button" data-k="{k}" aria-pressed="{str(k == "all").lower()}">{v}</button>' for k, v in filters)
     # the spotlight game sits right above, so the grid shows the rest (two full rows of three)
-    cards = "\n".join(card(g, i) for i, g in enumerate(x for x in GAMES if not x.get("spotlight")))
-    html = head("The Rare Jackal · Strategy games with teeth",
-                "The Rare Jackal is a one-person game studio. Age Breaker: Six Eras is out now on Steam for PC and Mac; more games on the way.",
+    cards = "\n".join(card(g) for g in GAMES if not g.get("spotlight"))
+    html = head("The Rare Jackal · Independent Development Studio",
+                "The Rare Jackal is an independent, one-person development studio for games, software, and interactive experiments.",
                 SITE + "/", SITE + "/assets/og.png", "")
     html += "<body>\n" + nav("", True) + f"""<main id="main">
 <header class="hero">
-  <canvas aria-hidden="true"></canvas>
   <div class="wrap">
     <div>
-      <div class="eyebrow">Independent game studio <b>· Est. 2026</b></div>
-      <h1>Strategy games <em>with teeth.</em></h1>
-      <p class="lede">One developer making every game, from the code to the soundtrack. Original worlds, original music, no ads, ever.</p>
-      <div class="btns"><a class="btn btn-primary" href="#games">See the games</a><a class="btn btn-ghost" href="#follow">Follow along</a></div>
-      <div class="stats"><div><b>{len(GAMES)}</b><span>Games</span></div><div><b>{sum(g["status"] == "out" for g in GAMES)}</b><span>Out now</span></div><div><b>{sum(g["status"] != "out" for g in GAMES)}</b><span>On the way</span></div></div>
+      <div class="eyebrow">Independent development studio</div>
+      <h1>Games, software, <em>and experiments.</em></h1>
+      <p class="lede">The Rare Jackal is a one-person studio building original games and exploring tools, apps, and interactive ideas.</p>
+      <div class="btns"><a class="btn btn-primary" href="#games">Explore the work</a><a class="btn btn-ghost" href="#studio">About the studio</a></div>
     </div>
-    <div class="mark-wrap" aria-hidden="true"><div class="halo"></div><div class="ring"></div><img src="assets/mark.svg" alt=""></div>
+    <div class="mark-wrap" aria-hidden="true"><img src="assets/mark.svg" alt=""></div>
   </div>
 </header>
 
 <section id="games">
   <div class="wrap">
-    <div class="section-head rv">
-      <div><div class="eyebrow">Spotlight</div><h2>Latest release</h2></div>
+    <div class="section-head">
+      <h2>Featured release</h2>
     </div>
-    <article class="spot rv" style="--accent:{spot['accent']}">
-      <div class="screen" data-trailer="{spot['trailer']}">
-        <video src="{spot['loop']}" poster="{spot['poster']}" autoplay muted loop playsinline aria-label="{e(spot['title'])} gameplay"></video>
+    <article class="spot" style="--accent:{spot['accent']}">
+      <div class="screen">
+        <video src="{spot['trailer']}" poster="{spot['poster']}" preload="none" playsinline aria-label="{e(spot['title'])} trailer"></video>
         <button class="play" type="button" aria-label="Watch the {e(spot['title'])} trailer with sound"><i>Watch trailer</i></button>
       </div>
       <div class="body">
@@ -191,38 +188,32 @@ def build_home():
 
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="section-head rv">
-      <div><div class="eyebrow">The catalog</div><h2>More games</h2></div>
-      <p>Released, coming soon and still in the den. Tap a game to see what it's about.</p>
+    <div class="section-head">
+      <h2>Game catalog</h2>
     </div>
-    <div class="filters rv" role="group" aria-label="Filter games">{fbtns}</div>
+    <div class="filters" role="group" aria-label="Filter games">{fbtns}</div>
     <div class="grid">
 {cards}
-      
     </div>
   </div>
 </section>
 
 <section class="studio" id="studio">
   <div class="wrap">
-    <div class="rv">
-      <div class="eyebrow">The studio</div>
-      <h2>One jackal.<br><em>No pack.</em></h2>
+    <div class="studio-intro">
+      <h2>About the studio</h2>
+      <p>One developer works across design, code, art, and sound. The studio started with games and is expanding into practical software and interactive prototypes.</p>
     </div>
-    <div class="copy rv" data-d="120">
-      <p><strong>The Rare Jackal is a one-person game studio.</strong> Design, code, art and music all come from the same desk, so every game ships the way it was meant to.</p>
-      <p>The focus is games you can sink your teeth into: lane battles, horde defense, spellcraft, rhythm, tycoons and the occasional strange experiment. Every PC game runs on Windows and Mac.</p>
-      <div class="promises">
-        <div class="promise"><b>No ads</b><span>Not now, not later.</span></div>
-        <div class="promise"><b>No gacha</b><span>No loot boxes or energy timers.</span></div>
-        <div class="promise"><b>Original</b><span>Every world and soundtrack is ours.</span></div>
-      </div>
+    <div class="disciplines">
+      <div><h3>Games</h3><p>Original strategy and action games for desktop, mobile, and Roblox.</p></div>
+      <div><h3>Software</h3><p>Tools and apps that make everyday workflows simpler.</p></div>
+      <div><h3>Experiments</h3><p>Small prototypes that explore new mechanics and ways to interact.</p></div>
     </div>
   </div>
 </section>
 </main>
 
-""" + follow("") + footer("")
+""" + follow() + footer("")
     (ROOT / "index.html").write_text(bust(html), encoding="utf-8")
 
 
@@ -240,22 +231,22 @@ def build_game(g, idx):
     if g.get("trailer"):
         trailer = f"""<section style="padding-bottom:0">
   <div class="wrap">
-    <div class="section-head rv"><div><div class="eyebrow">Trailer</div><h2>See it move</h2></div></div>
-    <div class="trailer rv"><video src="{root}{g['trailer']}" poster="{root}{g['poster']}" controls playsinline preload="metadata"></video></div>
+    <div class="section-head"><div><div class="eyebrow">Trailer</div><h2>See it move</h2></div></div>
+    <div class="trailer"><video src="{root}{g['trailer']}" poster="{root}{g['poster']}" controls playsinline preload="metadata"></video></div>
   </div>
 </section>
 """
     concept = "".join(f"<p>{e(p)}</p>" for p in g["concept"])
     feats = "\n".join(
-        f'      <div class="feature rv" data-d="{(i % 3) * 60}"><h3>{e(t)}</h3><p>{e(d)}</p></div>'
-        for i, (t, d) in enumerate(g["features"]))
+        f'      <div class="feature"><h3>{e(t)}</h3><p>{e(d)}</p></div>'
+        for t, d in g["features"])
     caps = g.get("captions", [])
     # fill the 4-column gallery: first shot is 2x2, stretch the last one over any gap
     rem = (4 + max(shots - 1, 0)) % 4
     last_span = f' style="grid-column:span {4 - rem + 1}"' if shots > 2 and rem else ""
 
     gal = "\n".join(
-        f'      <button type="button" class="rv"{last_span if i == shots - 1 else ""} data-d="{(i % 4) * 60}" data-full="{root}assets/games/{slug}/{i + 1}.jpg" data-cap="{e(caps[i] if i < len(caps) else "")}" aria-label="View screenshot: {e(caps[i] if i < len(caps) else str(i + 1))}"><img src="{root}assets/games/{slug}/{i + 1}-t.jpg" alt="{e(caps[i] if i < len(caps) else "")}" loading="lazy"><figcaption>{e(caps[i] if i < len(caps) else "")}</figcaption></button>'
+        f'      <button type="button" {last_span if i == shots - 1 else ""} data-full="{root}assets/games/{slug}/{i + 1}.jpg" data-cap="{e(caps[i] if i < len(caps) else "")}" aria-label="View screenshot: {e(caps[i] if i < len(caps) else str(i + 1))}"><img src="{root}assets/games/{slug}/{i + 1}-t.jpg" alt="{e(caps[i] if i < len(caps) else "")}" loading="lazy"><figcaption>{e(caps[i] if i < len(caps) else "")}</figcaption></button>'
         for i in range(shots))
     wip = "" if g["status"] == "out" else '<div class="wip">Work-in-progress captures and concept art. Things will change before launch.</div>'
     prev = GAMES[idx - 1]
@@ -278,17 +269,17 @@ def build_game(g, idx):
 {trailer}
 <section class="concept">
   <div class="wrap">
-    <div class="rv">
+    <div>
       <div class="eyebrow">The concept</div>
       <blockquote style="margin-top:22px">{e(g['tagline'])}</blockquote>
     </div>
-    <div class="copy rv" data-d="120">{concept}</div>
+    <div class="copy">{concept}</div>
   </div>
 </section>
 
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="section-head rv"><div><div class="eyebrow">What's inside</div><h2>Features</h2></div></div>
+    <div class="section-head"><div><div class="eyebrow">What's inside</div><h2>Features</h2></div></div>
     <div class="features">
 {feats}
     </div>
@@ -297,7 +288,7 @@ def build_game(g, idx):
 
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="section-head rv"><div><div class="eyebrow">{e(g.get('shots_label', 'Screenshots'))}</div><h2>{'Screenshots' if g['status'] == 'out' else 'In the workshop'}</h2></div></div>
+    <div class="section-head"><div><div class="eyebrow">{e(g.get('shots_label', 'Screenshots'))}</div><h2>{'Screenshots' if g['status'] == 'out' else 'In the workshop'}</h2></div></div>
     <div class="gallery{' few' if shots <= 2 else ''}">
 {gal}
     </div>
@@ -307,13 +298,13 @@ def build_game(g, idx):
 
 <section style="padding-top:0">
   <div class="wrap pager">
-    <a class="rv" href="{root}games/{prev['slug']}/" style="--accent:{prev['accent']}"><span>← Previous</span><b>{e(prev['title'])}</b></a>
-    <a class="rv nxt" href="{root}games/{nxt['slug']}/" style="--accent:{nxt['accent']}"><span>Next →</span><b>{e(nxt['title'])}</b></a>
+    <a href="{root}games/{prev['slug']}/" style="--accent:{prev['accent']}"><span>Previous</span><b>{e(prev['title'])}</b></a>
+    <a class="rv nxt" href="{root}games/{nxt['slug']}/" style="--accent:{nxt['accent']}"><span>Next</span><b>{e(nxt['title'])}</b></a>
   </div>
 </section>
 </main>
 
-""" + follow(root) + footer(root)
+""" + follow() + footer(root)
     d = ROOT / "games" / slug
     d.mkdir(parents=True, exist_ok=True)
     (d / "index.html").write_text(bust(html), encoding="utf-8")
