@@ -144,7 +144,8 @@ def build_home():
     spot = next(g for g in GAMES if g.get("spotlight"))
     filters = [("all", "All")] + [(k, v) for k, v in STATUS.items() if any(g["status"] == k for g in GAMES)]
     fbtns = "".join(f'<button type="button" data-k="{k}" aria-pressed="{str(k == "all").lower()}">{v}</button>' for k, v in filters)
-    cards = "\n".join(card(g, i) for i, g in enumerate(GAMES))
+    # the spotlight game sits right above, so the grid shows the rest (two full rows of three)
+    cards = "\n".join(card(g, i) for i, g in enumerate(x for x in GAMES if not x.get("spotlight")))
     html = head("The Rare Jackal · Strategy games with teeth",
                 "The Rare Jackal is a one-person game studio. Age Breaker: Six Eras is out now on Steam for PC and Mac; more games on the way.",
                 SITE + "/", SITE + "/assets/og.png", "")
@@ -191,7 +192,7 @@ def build_home():
 <section style="padding-top:0">
   <div class="wrap">
     <div class="section-head rv">
-      <div><div class="eyebrow">The catalog</div><h2>Every game</h2></div>
+      <div><div class="eyebrow">The catalog</div><h2>More games</h2></div>
       <p>Released, coming soon and still in the den. Tap a game to see what it's about.</p>
     </div>
     <div class="filters rv" role="group" aria-label="Filter games">{fbtns}</div>
