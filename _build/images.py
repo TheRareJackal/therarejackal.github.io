@@ -23,6 +23,7 @@ SHOTS = {
   "corpse-tide": [CAP/"ct/z4.png", CAP/"ct/b10.png", CAP/"ct/z3.png", CAP/"ct/keep-plan.png", CAP/"ct/keep-briefing.png", CAP/"ct/b07.png"],
   "a-thousand-wands": [CAP/"aw/s11.png", CAP/"aw/s04.png", CAP/"aw/s09.png", CAP/"aw/s13.png", CAP/"aw/01.png", CAP/"wands/00-fresh-menu-tree.png"],
   "meat-vector": [CAP/"mv/g01.png", CAP/"mv/g04.png", CAP/"mv/g05.png", CAP/"mv/02.png", CAP/"mv/g02.png", CAP/"mv/keep-starter.png"],
+  "feed-a-black-hole": [CAP/f"fabh/{i}.png" for i in (3, 7, 4, 5, 8, 6)],
   "nightwinder": [CAP/"nw/w5_6.png", CAP/"nw/w3_2.png", CAP/"nw/w5_4.png", CAP/"nw/w4_6.png", CAP/"nw/w4_end.png", CAP/"nw/keep-upgrade.png", CAP/"nw/01.png"],
 }
 def bg_fill(im):
@@ -48,3 +49,6 @@ for slug in ["stock-market-dynasty", "corpse-tide", "a-thousand-wands", "meat-ve
     im = Image.open(OUT/slug/"1.jpg").convert("RGB"); w, h = im.size; ch = int(w*430/920)
     top = max(0, (h - ch)//2)
     im.crop((0, top, w, min(h, top + ch))).resize((1380, 645), Image.LANCZOS).save(ROOT/"assets"/f"{slug}.jpg", quality=84, optimize=True, progressive=True)
+# Feed a Black Hole: card from its Roblox key art (Roblox serves screenshots at 768x432 at most)
+im = Image.open(CAP/"fabh/1.png").convert("RGB"); w, h = im.size; ch = int(w*430/920)
+im.crop((0, 12, w, 12 + ch)).resize((1380, 645), Image.LANCZOS).save(ROOT/"assets"/"feed-a-black-hole.jpg", quality=86, optimize=True, progressive=True)
