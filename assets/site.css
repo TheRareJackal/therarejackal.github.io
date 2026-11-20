@@ -277,3 +277,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .nav { position:static; }
   [id] { scroll-margin-top:8px; }
 }
+.software-entry .btns { margin-top: 16px; }
+.software-entry .btns a { margin-top: 0; }
+.software-entry .dlnote { margin-top: 10px; font-size: .85rem; }

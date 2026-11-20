@@ -129,7 +129,10 @@ def card(g):
 def software_listing():
     rows = []
     for app in SOFTWARE:
-        link = f'<a href="{e(app["url"])}">{e(app.get("link_label", "Visit project"))}</a>' if app.get("url") else ""
+        link = f'<div class="btns"><a class="btn btn-primary" href="{e(app["url"])}">{e(app.get("link_label", "Visit project"))}</a>' if app.get("url") else ""
+        if link:
+            link += (f'<a class="btn btn-ghost" href="{e(app["notes_url"])}">Release notes</a>' if app.get("notes_url") else "") + "</div>"
+            link += f'<p class="dlnote">{e(app["note"])}</p>' if app.get("note") else ""
         rows.append(f"""<article class="software-entry">
           <img src="{e(app['icon'])}" width="100" height="100" alt="">
           <div><p class="kind">{e(app['kind'])}</p><h3>{e(app['name'])}</h3>
