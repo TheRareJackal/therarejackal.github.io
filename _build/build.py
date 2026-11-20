@@ -150,7 +150,7 @@ def build_home():
   <div class="wrap masthead-inner">
     <div class="studio-copy">
       <h1>The Rare<br>Jackal</h1>
-    <p>The Rare Jackal is my one-person development studio. I build JStack, a browser for working on several pages side by side. I also make games and write their music. In Nightwinder, each attack you pick adds another part to the score.</p>
+    <p>I’m The Rare Jackal, a solo developer making software and games.</p>
     <nav class="project-links" aria-label="Browse projects"><a href="#games">Browse games</a><a href="#software">Explore software</a></nav>
     </div>
     <div class="studio-emblem" aria-hidden="true"><img src="assets/mark.svg" alt="" width="1024" height="1024"></div>
