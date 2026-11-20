@@ -2,7 +2,7 @@
 SOFTWARE = [
     {
         "name": "JStack",
-        "description": "Keep a reference page open beside the page you’re working on. JStack groups browser cards by project and lets you zoom out to see the whole workspace.",
+        "description": "JStack gives each project its own group of browser cards. I can keep the docs open beside the page I’m building, then zoom out and find another project without losing my place.",
         "kind": "Browser workspace",
         "platform": "macOS",
         "status": "In development",

@@ -143,14 +143,14 @@ def build_home():
     fbtns = "".join(f'<button type="button" data-k="{k}" aria-pressed="{str(k == "all").lower()}">{v}</button>' for k, v in filters)
     cards = "\n".join(card(g) for g in GAMES)
     html = head("The Rare Jackal · Independent Development Studio",
-                "The Rare Jackal is an independent, one-person development studio for games, software, and interactive experiments.",
+                "Games, software, and original music from The Rare Jackal, the one-person studio behind the JStack browser, Age Breaker, and Nightwinder.",
                 SITE + "/", SITE + "/assets/og.png", "")
     html += '<body class="home">\n' + nav("", True) + f"""<main id="main">
 <header class="masthead" id="studio">
   <div class="wrap masthead-inner">
     <div class="studio-copy">
       <h1>The Rare<br>Jackal</h1>
-    <p>I make games and write their music. My other project is JStack, a Mac browser that puts related pages side by side.</p>
+    <p>The Rare Jackal is my one-person development studio. I build JStack, a browser for working on several pages side by side. I also make games and write their music. In Nightwinder, each attack you pick adds another part to the score.</p>
     <nav class="project-links" aria-label="Browse projects"><a href="#games">Browse games</a><a href="#software">Explore software</a></nav>
     </div>
     <div class="studio-emblem" aria-hidden="true"><img src="assets/mark.svg" alt="" width="1024" height="1024"></div>
@@ -198,7 +198,7 @@ def build_game(g, idx):
     url = f"{SITE}/games/{slug}/"
     shots = g.get("shots", 0)
     hero_img = f"{root}assets/games/{slug}/1.jpg" if shots else root + g["card"]
-    desc = f"{g['title']}: {g['blurb']}"
+    desc = g["blurb"]
     full_title = g["title"] + (f": {g['subtitle']}" if g.get("subtitle") else "")
     rel = f'<span class="when">Released {e(g["released"])}</span>' if g.get("released") else ""
     btns = link_btns(g)
@@ -219,7 +219,7 @@ def build_game(g, idx):
     gal = "\n".join(
         f'      <button type="button" data-full="{root}assets/games/{slug}/{i + 1}.jpg" data-cap="{e(caps[i] if i < len(caps) else "")}" aria-label="View screenshot: {e(caps[i] if i < len(caps) else str(i + 1))}"><picture><source media="(min-resolution: 1.5dppx), (min-width: 65rem)" srcset="{root}assets/games/{slug}/{i + 1}.jpg"><img src="{root}assets/games/{slug}/{i + 1}-t.jpg" alt="{e(caps[i] if i < len(caps) else "")}" loading="lazy"></picture><span class="caption">{e(caps[i] if i < len(caps) else "")}</span></button>'
         for i in range(shots))
-    wip = "" if g["status"] == "out" else '<div class="wip">Work-in-progress captures and concept art. Things will change before launch.</div>'
+    wip = "" if g["status"] == "out" else '<div class="wip">These images are from development.</div>'
     prev = GAMES[idx - 1]
     nxt = GAMES[(idx + 1) % len(GAMES)]
 
