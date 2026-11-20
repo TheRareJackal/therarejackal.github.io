@@ -21,69 +21,66 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=163b81a1">
+<link rel="stylesheet" href="assets/site.css?v=a30017e8">
 </head>
-<body>
+<body class="home">
 <a class="skip" href="#main">Skip to content</a>
 <nav class="nav" aria-label="Main">
   <div class="wrap">
     <a class="brand" href="./" aria-label="The Rare Jackal home"><img src="assets/mark.svg?v=38f12c35" alt="">The Rare Jackal</a>
     <ul>
-      <li><a href="#games">Work</a></li>
+      <li><a href="#games">Games</a></li>
+      <li><a href="#software">Software</a></li>
       <li><a href="#studio">Studio</a></li>
-      <li><a href="#follow">Follow</a></li>
     </ul>
   </div>
 </nav>
 <main id="main">
-<header class="hero">
-  <div class="wrap">
-    <div>
-      <div class="eyebrow">Independent development studio</div>
-      <h1>Games, software, <em>and experiments.</em></h1>
-      <p class="lede">The Rare Jackal is a one-person studio building original games and exploring tools, apps, and interactive ideas.</p>
-      <div class="btns"><a class="btn btn-primary" href="#games">Explore the work</a><a class="btn btn-ghost" href="#studio">About the studio</a></div>
-    </div>
-    <div class="mark-wrap" aria-hidden="true"><img src="assets/mark.svg?v=38f12c35" alt=""></div>
-  </div>
+<header class="masthead wrap" id="studio">
+  <h1>The Rare Jackal</h1>
+  <p>I write software, make games, and compose their soundtracks. My current projects include JStack, a browser, and Age Breaker, a strategy game.</p>
 </header>
-
+<section class="release wrap" aria-labelledby="release-title">
+  <div class="release-art">
+    <video src="assets/age-breaker-trailer.mp4?v=72bb2cd7" poster="assets/age-breaker.jpg?v=9fab124a" controls preload="none" playsinline aria-label="Age Breaker trailer"></video>
+  </div>
+  <div class="release-copy">
+    <p class="kind">Featured game</p>
+    <h2 id="release-title">Age Breaker<small>Six Eras</small></h2>
+    <p>Evolve your army from bone clubs to plasma blades and hold one lane against six eras of escalating war. Free to start on Android, free demo on Steam.</p>
+    <div class="release-links">
+      <a href="games/age-breaker/">Game details</a>
+      <a href="https://store.steampowered.com/app/5431200/">Steam</a> <a href="https://play.google.com/store/apps/details?id=io.exodata.agebreaker">Google Play</a>
+    </div>
+  </div>
+</section>
+<section class="software wrap" id="software">
+  <h2>Software</h2>
+  <article class="software-entry">
+          <img src="assets/jstack.svg?v=5a0355ba" width="100" height="100" alt="">
+          <div><p class="kind">Browser workspace</p><h3>JStack</h3>
+          <p>A browser for working with several pages at once. Open sites in side-by-side cards, group them by project, and zoom out to find the page you need.</p></div>
+          <p class="availability">macOS<br>In development</p>
+        </article>
+</section>
 <section id="games">
   <div class="wrap">
     <div class="section-head">
-      <h2>Featured release</h2>
-    </div>
-    <article class="spot" style="--accent:#ffb01f">
-      <div class="screen">
-        <video src="assets/age-breaker-trailer.mp4?v=72bb2cd7" poster="assets/trailer-poster.jpg?v=b76efc73" preload="none" playsinline aria-label="Age Breaker trailer"></video>
-        <button class="play" type="button" aria-label="Watch the Age Breaker trailer with sound"><i>Watch trailer</i></button>
-      </div>
-      <div class="body">
-        <span class="tag out">Out now</span>
-        <h3>Age Breaker</h3>
-        <div class="genre">Six Eras · Lane strategy</div>
-        <div class="when">Released October 30, 2026 · PC &amp; Mac (Steam), Android, iOS</div>
-        <p>Evolve your army from bone clubs to plasma blades and hold one lane against six eras of escalating war. Free to start on Android, free demo on Steam.</p>
-        <div class="btns">
-<a class="btn btn-primary" href="https://store.steampowered.com/app/5431200/">Buy on Steam</a>
-<a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=io.exodata.agebreaker">Free to start on Google Play</a>
-<span class="btn btn-off" aria-disabled="true">App Store · Soon</span>
-          <a class="btn btn-ghost" href="games/age-breaker/">Learn more</a>
-        </div>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Game catalog</h2>
+      <h2>Games</h2>
     </div>
     <div class="filters" role="group" aria-label="Filter games"><button type="button" data-k="all" aria-pressed="true">All</button><button type="button" data-k="out" aria-pressed="false">Out now</button><button type="button" data-k="soon" aria-pressed="false">Coming soon</button><button type="button" data-k="dev" aria-pressed="false">In development</button></div>
     <div class="grid">
+      <a class="card" data-status="out" href="games/age-breaker/" style="--accent:#ffb01f">
+        <div class="art"><img src="assets/age-breaker.jpg?v=9fab124a" alt="" loading="lazy"></div>
+        <div class="body">
+          <div class="top"><span class="genre">Lane strategy</span><span class="tag out">Out now</span></div>
+          <h3>Age Breaker</h3>
+          <p>A one-lane strategy game of armies, defenses and evolution. Spend gold on a push now or save for the next age. Free to start on Android, free demo on Steam.</p>
+          <div class="chips"><span>PC &amp; Mac (Steam)</span><span>Android</span><span>iOS</span></div>
+        </div>
+      </a>
       <a class="card" data-status="out" href="games/stock-market-dynasty/" style="--accent:#3ee07a">
-        <div class="art"><img src="assets/stock-market-dynasty.jpg?v=1f553d8a" alt="Stock Market Dynasty" loading="lazy"></div>
+        <div class="art"><img src="assets/stock-market-dynasty.jpg?v=1f553d8a" alt="" loading="lazy"></div>
         <div class="body">
           <div class="top"><span class="genre">Trading tycoon</span><span class="tag out">Out now</span></div>
           <h3>Stock Market Dynasty</h3>
@@ -92,7 +89,7 @@
         </div>
       </a>
       <a class="card" data-status="out" href="games/feed-a-black-hole/" style="--accent:#8b5cff">
-        <div class="art"><img src="assets/feed-a-black-hole.jpg?v=176bd420" alt="Feed a Black Hole" loading="lazy"></div>
+        <div class="art"><img src="assets/feed-a-black-hole.jpg?v=176bd420" alt="" loading="lazy"></div>
         <div class="body">
           <div class="top"><span class="genre">Co-op idle adventure</span><span class="tag out">Out now</span></div>
           <h3>Feed a Black Hole</h3>
@@ -101,7 +98,7 @@
         </div>
       </a>
       <a class="card" data-status="soon" href="games/corpse-tide/" style="--accent:#ff4b52">
-        <div class="art"><img src="assets/corpse-tide.jpg?v=2adc0511" alt="Corpse Tide" loading="lazy"></div>
+        <div class="art"><img src="assets/corpse-tide.jpg?v=2adc0511" alt="" loading="lazy"></div>
         <div class="body">
           <div class="top"><span class="genre">Evacuation strategy</span><span class="tag soon">Coming soon</span></div>
           <h3>Corpse Tide</h3>
@@ -110,7 +107,7 @@
         </div>
       </a>
       <a class="card" data-status="soon" href="games/a-thousand-wands/" style="--accent:#b98cff">
-        <div class="art"><img src="assets/a-thousand-wands.jpg?v=71efea26" alt="A Thousand Wands" loading="lazy"></div>
+        <div class="art"><img src="assets/a-thousand-wands.jpg?v=71efea26" alt="" loading="lazy"></div>
         <div class="body">
           <div class="top"><span class="genre">Spellcasting army defense</span><span class="tag soon">Coming soon</span></div>
           <h3>A Thousand Wands</h3>
@@ -119,7 +116,7 @@
         </div>
       </a>
       <a class="card" data-status="dev" href="games/meat-vector/" style="--accent:#3fd4e0">
-        <div class="art"><img src="assets/meat-vector.jpg?v=9cb799c8" alt="Meat Vector" loading="lazy"></div>
+        <div class="art"><img src="assets/meat-vector.jpg?v=9cb799c8" alt="" loading="lazy"></div>
         <div class="body">
           <div class="top"><span class="genre">3D action roguelite</span><span class="tag dev">In development</span></div>
           <h3>Meat Vector</h3>
@@ -128,7 +125,7 @@
         </div>
       </a>
       <a class="card" data-status="dev" href="games/nightwinder/" style="--accent:#e8c26a">
-        <div class="art"><img src="assets/nightwinder.jpg?v=10ef9610" alt="Nightwinder" loading="lazy"></div>
+        <div class="art"><img src="assets/nightwinder.jpg?v=10ef9610" alt="" loading="lazy"></div>
         <div class="body">
           <div class="top"><span class="genre">Music-driven action roguelite</span><span class="tag dev">In development</span></div>
           <h3>Nightwinder</h3>
@@ -140,36 +137,9 @@
   </div>
 </section>
 
-<section class="studio" id="studio">
-  <div class="wrap">
-    <div class="studio-intro">
-      <h2>About the studio</h2>
-      <p>One developer works across design, code, art, and sound. The studio started with games and is expanding into practical software and interactive prototypes.</p>
-    </div>
-    <div class="disciplines">
-      <div><h3>Games</h3><p>Original strategy and action games for desktop, mobile, and Roblox.</p></div>
-      <div><h3>Software</h3><p>Tools and apps that make everyday workflows simpler.</p></div>
-      <div><h3>Experiments</h3><p>Small prototypes that explore new mechanics and ways to interact.</p></div>
-    </div>
-  </div>
-</section>
 </main>
 
-<div class="follow" id="follow">
-  <div class="wrap">
-    <div>
-      <h2>Follow the studio</h2>
-      <p>Releases, devlogs, and a look at what’s in progress.</p>
-    </div>
-    <div class="socials">
-      <a class="btn" href="https://www.youtube.com/@RareJackal">YouTube</a>
-      <a class="btn" href="https://x.com/TheRareJackal">X</a>
-      <a class="btn" href="https://www.instagram.com/therarejackaldev/">Instagram</a>
-      <a class="btn" href="https://www.tiktok.com/@rare.jackal">TikTok</a>
-    </div>
-  </div>
-</div>
-<footer>
+<footer id="follow">
   <div class="wrap">
     <span>© 2026 The Rare Jackal</span>
     <nav class="foot-social" aria-label="Social">
@@ -180,6 +150,6 @@
     </nav>
   </div>
 </footer>
-<script src="assets/site.js?v=109a6852" defer></script>
+<script src="assets/site.js?v=eb383551" defer></script>
 </body>
 </html>

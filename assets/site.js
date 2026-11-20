@@ -17,15 +17,6 @@
     apply();
   }
 
-  // Play the trailer only when requested.
-  $$(".spot .screen").forEach(box => {
-    const v = $("video", box), btn = $(".play", box);
-    btn && btn.addEventListener("click", () => {
-      v.controls = true;
-      btn.remove(); v.focus(); v.play().catch(() => {});
-    });
-  });
-
   // lightbox
   const shots = $$(".gallery button");
   if (shots.length) {
