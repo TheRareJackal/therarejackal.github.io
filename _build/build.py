@@ -148,15 +148,17 @@ def build_home():
     html += '<body class="home">\n' + nav("", True) + f"""<main id="main">
 <header class="masthead" id="studio">
   <div class="wrap masthead-inner">
-    <h1>The Rare<br>Jackal</h1>
+    <div class="studio-copy">
+      <h1>The Rare<br>Jackal</h1>
     <p>I make games and write their music. My other project is JStack, a Mac browser that puts related pages side by side.</p>
     <nav class="project-links" aria-label="Browse projects"><a href="#games">Browse games</a><a href="#software">Explore software</a></nav>
-    <a class="art-credit" href="games/feed-a-black-hole/">Art from <i>Feed a Black Hole</i></a>
+    </div>
+    <div class="studio-emblem" aria-hidden="true"><img src="assets/mark.svg" alt="" width="1024" height="1024"></div>
   </div>
 </header>
 <section class="release wrap" aria-labelledby="release-title">
   <div class="release-art">
-    <video src="{spot['trailer']}" poster="{spot['card']}" controls preload="none" playsinline aria-label="{e(spot['title'])} trailer"></video>
+    <video src="{spot['trailer']}" poster="assets/games/{spot['slug']}/1.jpg" controls preload="none" playsinline aria-label="{e(spot['title'])} trailer"></video>
   </div>
   <div class="release-copy">
     <p class="kind">Featured release</p>
@@ -214,12 +216,8 @@ def build_game(g, idx):
         f'      <div class="feature"><h3>{e(t)}</h3><p>{e(d)}</p></div>'
         for t, d in g["features"])
     caps = g.get("captions", [])
-    # fill the 4-column gallery: first shot is 2x2, stretch the last one over any gap
-    rem = (4 + max(shots - 1, 0)) % 4
-    last_span = f' style="grid-column:span {4 - rem + 1}"' if shots > 2 and rem else ""
-
     gal = "\n".join(
-        f'      <button type="button" {last_span if i == shots - 1 else ""} data-full="{root}assets/games/{slug}/{i + 1}.jpg" data-cap="{e(caps[i] if i < len(caps) else "")}" aria-label="View screenshot: {e(caps[i] if i < len(caps) else str(i + 1))}"><img src="{root}assets/games/{slug}/{i + 1}-t.jpg" alt="{e(caps[i] if i < len(caps) else "")}" loading="lazy"><span class="caption">{e(caps[i] if i < len(caps) else "")}</span></button>'
+        f'      <button type="button" data-full="{root}assets/games/{slug}/{i + 1}.jpg" data-cap="{e(caps[i] if i < len(caps) else "")}" aria-label="View screenshot: {e(caps[i] if i < len(caps) else str(i + 1))}"><picture><source media="(min-resolution: 1.5dppx), (min-width: 65rem)" srcset="{root}assets/games/{slug}/{i + 1}.jpg"><img src="{root}assets/games/{slug}/{i + 1}-t.jpg" alt="{e(caps[i] if i < len(caps) else "")}" loading="lazy"></picture><span class="caption">{e(caps[i] if i < len(caps) else "")}</span></button>'
         for i in range(shots))
     wip = "" if g["status"] == "out" else '<div class="wip">Work-in-progress captures and concept art. Things will change before launch.</div>'
     prev = GAMES[idx - 1]
@@ -228,14 +226,16 @@ def build_game(g, idx):
     html = head(f"{full_title} · The Rare Jackal", desc, url, SITE + "/" + (f"assets/games/{slug}/1.jpg" if shots else g["card"]), root)
     html += f'<body style="--accent:{g["accent"]}">\n' + nav(root, False) + f"""<main id="main">
 <header class="ghero">
-  <div class="bg" style="background-image:url('{hero_img}')"></div>
-  <div class="wrap">
+  <div class="wrap game-intro">
+    <div class="game-summary">
     <div class="crumb"><a href="{root}#games">Games</a> / {e(g['title'])}</div>
     <h1>{e(g['title'])}</h1>
     {f'<div class="sub">{e(g["subtitle"])}</div>' if g.get('subtitle') else ''}
     <p class="tagline">{e(g['tagline'])}</p>
     <div class="meta"><span class="tag {g['status']}">{STATUS[g['status']]}</span>{rel}<span class="genre">{e(g['genre'])}</span><div class="chips">{chips(g)}</div></div>
     <div class="btns">{btns}</div>
+    </div>
+    <figure class="game-preview"><img src="{hero_img}" alt="{e(caps[0] if caps else g['title'])}"></figure>
   </div>
 </header>
 

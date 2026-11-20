@@ -20,18 +20,33 @@
   // lightbox
   const shots = $$(".gallery button");
   if (shots.length) {
-    const lb = document.createElement("div"); lb.className = "lb"; lb.setAttribute("role", "dialog"); lb.setAttribute("aria-modal", "true");
-    lb.innerHTML = '<img alt=""><p></p><button class="x" aria-label="Close">✕</button><button class="pv" aria-label="Previous">‹</button><button class="nx" aria-label="Next">›</button>';
+    const lb = document.createElement("dialog");
+    lb.className = "lb";
+    lb.setAttribute("aria-label", "Screenshot viewer");
+    lb.innerHTML = '<button class="x" aria-label="Close">×</button><img alt=""><footer><button class="pv" aria-label="Previous screenshot">‹</button><p aria-live="polite"></p><button class="nx" aria-label="Next screenshot">›</button></footer>';
     document.body.append(lb);
-    let i = 0, last;
-    const show = n => { i = (n + shots.length) % shots.length; const s = shots[i];
-      $("img", lb).src = s.dataset.full; $("img", lb).alt = s.dataset.cap || ""; $("p", lb).textContent = s.dataset.cap || ""; };
-    const close = () => { lb.classList.remove("open"); document.body.style.overflow = ""; last && last.focus(); };
-    shots.forEach((s, n) => s.addEventListener("click", () => { last = s; show(n); lb.classList.add("open"); document.body.style.overflow = "hidden"; $(".x", lb).focus(); }));
-    $(".x", lb).onclick = close; $(".pv", lb).onclick = () => show(i - 1); $(".nx", lb).onclick = () => show(i + 1);
-    lb.addEventListener("click", e => { if (e.target === lb) close(); });
-    addEventListener("keydown", e => { if (!lb.classList.contains("open")) return;
-      if (e.key === "Escape") close(); if (e.key === "ArrowLeft") show(i - 1); if (e.key === "ArrowRight") show(i + 1); });
+    let index = 0;
+    const show = next => {
+      index = (next + shots.length) % shots.length;
+      const {full, cap} = shots[index].dataset;
+      $("img", lb).src = full;
+      $("img", lb).alt = cap || "";
+      $("p", lb).textContent = cap || "";
+    };
+    shots.forEach((shot, n) => shot.addEventListener("click", () => {
+      show(n);
+      lb.showModal();
+      document.body.style.overflow = "hidden";
+    }));
+    lb.addEventListener("close", () => { document.body.style.overflow = ""; });
+    $(".x", lb).onclick = () => lb.close();
+    $(".pv", lb).onclick = () => show(index - 1);
+    $(".nx", lb).onclick = () => show(index + 1);
+    lb.addEventListener("click", e => { if (e.target === lb) lb.close(); });
+    lb.addEventListener("keydown", e => {
+      if (e.key === "ArrowLeft") show(index - 1);
+      if (e.key === "ArrowRight") show(index + 1);
+    });
   }
 
   // pass ad UTM tags through to store links (Play via install referrer, Steam via query)
