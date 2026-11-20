@@ -37,8 +37,8 @@ GAMES = [
         "loop": "assets/age-breaker-loop.mp4",
         "poster": "assets/trailer-poster.jpg",
         "links": [
-            {"label": "Buy on Steam", "url": "https://store.steampowered.com/app/5431200/"},
-            {"label": "Free to start on Google Play", "url": "https://play.google.com/store/apps/details?id=io.exodata.agebreaker"},
+            {"label": "Buy on Steam", "store": "Steam", "icon": "steam", "url": "https://store.steampowered.com/app/5431200/"},
+            {"label": "Free to start on Google Play", "store": "Google Play", "icon": "googleplay", "url": "https://play.google.com/store/apps/details?id=io.exodata.agebreaker"},
             {"label": "App Store · Soon"},
         ],
         "feature_copy": "I gave both armies one road and the same decision. Do you pay for another wave, or let the enemy come a little closer while you save for rifles?",
@@ -69,7 +69,7 @@ GAMES = [
         "shots": 5,
         "shots_label": "Screenshots",
         "captions": ["The trading terminal", "Empire: buy property state by state", "Going long on a live chart", "Trading bots", "Watchlist and order ticket"],
-        "links": [{"label": "Play on Roblox", "url": "https://www.roblox.com/games/107712864019984/Stock-Market-Dynasty"}],
+        "links": [{"label": "Play on Roblox", "store": "Roblox", "icon": "roblox", "url": "https://www.roblox.com/games/107712864019984/Stock-Market-Dynasty"}],
     },
     {
         "slug": "feed-a-black-hole",
@@ -96,7 +96,7 @@ GAMES = [
         "shots": 6,
         "shots_label": "Screenshots",
         "captions": ["Feeding the black hole at the hub", "Every collapse rolls the next rarity", "Flying out to the distant islands", "A delivery with companions in tow", "The Orbital Outfitter workshop", "Harvest. Feed. Collapse."],
-        "links": [{"label": "Play on Roblox", "url": "https://www.roblox.com/games/134135155914015/Feed-a-Black-Hole"}],
+        "links": [{"label": "Play on Roblox", "store": "Roblox", "icon": "roblox", "url": "https://www.roblox.com/games/134135155914015/Feed-a-Black-Hole"}],
     },
     {
         "slug": "corpse-tide",

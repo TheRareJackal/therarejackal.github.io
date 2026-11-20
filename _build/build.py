@@ -92,16 +92,22 @@ def footer(root):
 """
 
 
-def link_btns(g, primary=True):
-    out = []
-    for l in g.get("links", []):
-        if l.get("url"):
-            cls = "btn-primary" if primary else "btn-ghost"
-            out.append(f'<a class="btn {cls}" href="{e(l["url"])}">{e(l["label"])}</a>')
-            primary = False
+def store_button(link, style, compact=False):
+    label = link.get("store", link["label"]) if compact else link["label"]
+    icon_class = f' store-{e(link["icon"])}' if link.get("icon") else ""
+    return f'<a class="btn {style}{icon_class}" href="{e(link["url"])}">{e(label)}</a>'
+
+
+def link_btns(g):
+    buttons = []
+    style = "btn-primary"
+    for link in g.get("links", []):
+        if link.get("url"):
+            buttons.append(store_button(link, style))
+            style = "btn-ghost"
         else:
-            out.append(f'<span class="btn btn-off" aria-disabled="true">{e(l["label"])}</span>')
-    return "\n".join(out)
+            buttons.append(f'<span class="btn btn-off" aria-disabled="true">{e(link["label"])}</span>')
+    return "\n".join(buttons)
 
 
 def chips(g):
@@ -136,7 +142,7 @@ def software_listing():
 def build_home():
     spot = next(g for g in GAMES if g.get("spotlight"))
     store_links = " ".join(
-        f'<a href="{e(link["url"])}">{e(link["label"].removeprefix("Buy on ").removeprefix("Free to start on "))}</a>'
+        store_button(link, "btn-ghost", compact=True)
         for link in spot.get("links", []) if link.get("url")
     )
     filters = [("all", "All")] + [(k, v) for k, v in STATUS.items() if any(g["status"] == k for g in GAMES)]
@@ -151,7 +157,7 @@ def build_home():
     <div class="studio-copy">
       <h1>The Rare<br>Jackal</h1>
     <p>I’m The Rare Jackal, a solo developer making software and games.</p>
-    <nav class="project-links" aria-label="Browse projects"><a href="#games">Browse games</a><a href="#software">Explore software</a></nav>
+    <nav class="project-links btns" aria-label="Browse projects"><a class="btn btn-primary" href="#games">Browse games</a><a class="btn btn-ghost" href="#software">Explore software</a></nav>
     </div>
     <div class="studio-emblem" aria-hidden="true"><img src="assets/mark.svg" alt="" width="1024" height="1024"></div>
   </div>
@@ -165,7 +171,7 @@ def build_home():
     <h2 id="release-title">{e(spot['title'])}<small>{e(spot['subtitle'])}</small></h2>
     <p>{e(spot.get('feature_copy', spot['pitch']))}</p>
     <div class="release-links">
-      <a href="games/{spot['slug']}/">Game details</a>
+      <a class="btn btn-primary" href="games/{spot['slug']}/">Game details</a>
       {store_links}
     </div>
   </div>
